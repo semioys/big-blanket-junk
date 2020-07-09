@@ -1,0 +1,4 @@
+<script type="text/javascript">
+{% if recommendations.performed %}
+    if(typeof(DLA)==='undefined')var DLA={};if(!DLA.DM)DLA.DM={};if(!DLA.DM.products)DLA.DM.products={};
+    {% for dm_tmp_product in recommendations.products %}{% render 'dla_dm_js_product_discounts', dm_orig_product: dm_tmp_product %}{% endfor %}{% endif %}</script>

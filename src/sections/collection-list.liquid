@@ -1,0 +1,103 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available when you add "Collection list" section in the Theme Editor.
+
+  Theme Store required settings 
+  - Heading: title of the collection list section
+  - Collection
+  {%- endcomment -%}
+  <div class="collection-list">
+    <div class="container">
+      {% if section.settings.title != blank %}
+      <h2 class="collection-list__title">{{ section.settings.title | escape }}</h2>
+      {% endif %}
+
+      <div class="collection-list__box">
+        {% for block in section.blocks %}
+        {%- assign collection = collections[block.settings.collection] -%}
+        <div class="collection-list__item" {{ block.shopify_attributes }}>
+
+          {% if collection.image != blank or collection.products.first != blank %}
+          {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
+          {% include 'responsive-image' with image: image_object, max_width: 615,max_height: 615 %} 
+          {% elsif collection == empty %}
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          {% endif %}
+          <div class="collection-list__item-header">
+            <div class="collection-list__item-info">
+              {%- assign default_label = 'homepage.onboarding.collection_title' | t -%}
+              <b>{{ collection.title | default: default_label }}</b>
+              <div>{{ collection.description}}</div> 
+            </div>
+            {% comment %}{{collection.metafields.my_custom.best_seller}}{% endcomment %}
+            {% if collection.metafields.my_custom.best_seller == 'true' %}
+            <div class="collection-list__item-status">
+              <div class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                BEST SELLER
+              </div>
+            </div>
+            {% endif %}
+
+          </div>
+          <div class="collection-list__item-action">
+            <a href="{{ collection.url | default: "#" }}" class="btn btn--white">
+              SHOP {{ collection.title | default: default_label }}
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% if section.blocks.size == 0 %}
+        {% include 'no-blocks' %}
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+  {% schema %}
+  {
+    "name": "Collection list",
+    "max_blocks": 12,
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Collection list"
+    }
+    ],
+    "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+      {
+        "label": "Collection",
+        "id": "collection",
+        "type": "collection"
+      }
+      ]
+    }
+    ],
+    "presets": [
+    {
+      "name": "Collection list",
+      "category": "Collection",
+      "blocks": [
+      {
+        "type": "collection"
+      },
+      {
+        "type": "collection"
+      },
+      {
+        "type": "collection"
+      }
+      ]
+    }
+    ]
+  }
+  {% endschema %}

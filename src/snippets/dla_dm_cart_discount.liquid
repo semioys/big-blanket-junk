@@ -1,0 +1,1 @@
+{% capture price_original %}{% render 'dla_dm_cart_original_total' %}{% endcapture %}{% assign price_original = price_original | abs %}{% capture price_final %}{% render 'dla_dm_cart_final_total' %}{% endcapture %}{% assign price_final = price_final | abs %}{% assign discount = price_original | minus: price_final %}{{ discount | round }}

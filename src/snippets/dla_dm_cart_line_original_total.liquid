@@ -1,0 +1,1 @@
+{% capture price %}{% render 'dla_dm_cart_line_original_individual', dm_rounding: false, dm_orig_line_item: dm_orig_line_item %}{% endcapture %}{{ price | abs | times: dm_orig_line_item.quantity | round }}

@@ -1,0 +1,1 @@
+{% capture prices %}{% render 'dla_dm_discounted_prices', dm_orig_product: dm_orig_product, dm_orig_variant: dm_orig_variant %}{% endcapture %}{% assign prices = prices | split: ',' %}{{ prices[1] }}

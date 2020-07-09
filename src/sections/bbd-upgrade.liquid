@@ -1,0 +1,106 @@
+{% if section.settings.video_link_vimeo != blank %}
+<style>
+
+  .equal-block--upgrade .equal-block__part--media iframe{
+    background-color: {{section.settings.background_color}};
+  }
+</style>
+{% endif %}
+
+<style>
+  .equal-block--upgrade .equal-block__part--info{
+    background-color: {{section.settings.background_color}};
+  }
+</style>
+
+
+<div class="equal-block equal-block--upgrade equal-block--{{section.settings.image_position}} asdfasdf3333333">
+  <div class="equal-block__part equal-block__part--media" {% if section.settings.upg_img != blank %} style="background-image: url('{{ section.settings.upg_img | img_url:'master' }}')" {% endif %} >
+    {% if section.settings.video_link_vimeo != blank %}
+    <iframe src="https://player.vimeo.com/video/{{section.settings.video_link_vimeo.id}}?color=54ef00&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    {% endif %}
+    {% if section.settings.video_link != blank %}
+    <video class="top-block__video lazyimg" preload="metadata" autoplay loop playsinline muted>
+      <source src="{{ section.settings.video_link}}" type="video/mp4">
+      </video>
+
+      {% endif %}
+
+    </div>
+    <div class="equal-block__part equal-block__part--info"> 
+      <div class="equal-block__part-content">
+
+        <h2>
+          {{ section.settings.upg_title }}
+        </h2>
+        <div class="equal-block__part-action">
+          <a href="{{ section.settings.cta_link }}" class="btn">
+            {{ section.settings.cta }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  {% schema %}
+  {
+    "name": "Image Full Bleed",
+    "settings": [
+    {
+      "id": "upg_img",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "video_link",
+      "type": "text",
+      "label": "Video link",
+      "info": "Vimeo .mp4 url"
+    },
+    {
+      "id": "upg_title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "cta",
+      "type": "text",
+      "label": "Cta",
+      "default": "shop now"
+    },
+    {
+      "id": "cta_link",
+      "type": "url",
+      "label": "Cta Link"
+    },
+    {
+     "type": "color",
+     "id": "background_color",
+     "label": "Background color",
+     "default": "#49505A"
+   },
+   {
+    "id": "image_position",
+    "type": "radio",
+    "label": "Image position",
+    "default":   "left",
+    "options": [
+    { "value": "left", "label": "Left"},
+    { "value": "right", "label": "Right"}
+    ]
+  }
+
+
+  ],
+  "presets": [
+  {
+    "name": "Image Full Bleed",
+    "category": "Blocks"
+  } 
+  ]
+}
+{% endschema %}

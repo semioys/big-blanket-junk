@@ -1,0 +1,109 @@
+<div class="equal-block equal-block--guarantee">
+  <div class="equal-block__part equal-block__part--left">
+    <div class="equal-block__part-content">
+      <h2>
+        {{ section.settings.grt_title }}
+      </h2> 
+      <div class="subtitle">
+        {{ section.settings.grt_subtitle }}
+      </div>
+      <div class="options-list">
+        {% for block in section.blocks %}
+        <div class="options-list__item">
+          {% if block.settings.icon_svg != blank %}
+          {% comment %}<img src="{{ block.settings.gtr_ico | img_url:'master' }}" alt="asdf">{% endcomment %}
+          <div class="options-list__item-ico">
+            {{ block.settings.icon_svg }}
+          </div>
+          {% else %}
+          <div class="options-list__item-ico">
+            <img class="lazyimg" src="#" data-src="{{ block.settings.icon | img_url: 'master' }}" alt="img">
+          </div>
+          {% endif %} 
+          {{ block.settings.gtr_optext }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="equal-block__part equal-block__part--right">
+    <div class="equal-block__media">
+      {% if section.settings.video_link_vimeo != blank %}
+      <iframe src="https://player.vimeo.com/video/{{section.settings.video_link_vimeo.id}}?color=54ef00&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+      {% elsif  section.settings.video_link != blank %}
+      <video class="top-block__video" src="{{ section.settings.video_link}}" preload="metadata" autoplay loop playsinline muted></video>
+      {% else %}
+      {% if section.settings.grt_image != blank %}
+      <img class="lazyimg" src="#" data-src="{{ section.settings.grt_image | img_url:'master' }}" alt="img">
+      {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% schema %}
+{
+  "name": "Image Left With Text",
+  "max_blocks": 5,
+  "settings": [
+  {
+    "id": "grt_image",
+    "type": "image_picker",
+    "label": "Image"
+  },
+  {
+    "id": "video_link",
+    "type": "text",
+    "label": "Video link",
+    "info": "Vimeo .mp4 url"
+  },
+  {
+    "id": "grt_title",
+    "type": "text",
+    "label": "Heading"
+  },
+  {
+    "id": "grt_subtitle",
+    "type": "text",
+    "label": "Body text"
+  }
+
+  ],
+  "blocks": [
+  {
+    "type": "select",
+    "name": "Item",
+    "settings": [
+    {
+      "id": "icon",
+      "type": "image_picker",
+      "label": "Icon image"
+    },
+    {
+      "id": "icon_svg",
+      "type": "text",
+      "label": "Icon Svg"
+    },
+    {
+      "id": "gtr_optext",
+      "type": "text",
+      "label": "Body text"
+    }
+    ]
+
+  }
+  
+  ],
+  "presets": [
+  {
+    "name": "Image With Text and Icon",
+    "category": "Blocks"
+  }
+  ]
+}
+{% endschema %}

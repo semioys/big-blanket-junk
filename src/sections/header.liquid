@@ -1,0 +1,329 @@
+{%- comment -%}
+This is a required section for the Shopify Theme Store.
+It is available in the "Header" section in the theme editor. 
+
+Theme Store required settings
+- Show announcement
+- Text: message to announce
+- Link: link of the announcement bar 
+
+Theme Store optional settings
+- Home page only: only shows on the home page
+{%- endcomment -%}
+<header data-section-id="{{ section.id }}" data-section-type="header" class="header">
+  {%- if section.settings.announcement_bar_enabled -%}
+  <div class="header__top">
+    <div class="container"> 
+      {%- if section.settings.announcement_bar_link != blank -%} 
+      <a href="{{ section.settings.announcement_bar_link }}">
+        {{ section.settings.announcement_bar_text | escape }}
+      </a>
+      {%- else -%}
+      {{ section.settings.announcement_bar_text | escape }}
+      {%- endif -%}
+    </div>
+  </div> 
+  {%- endif -%} 
+  <div class="header__content">
+    <div class="header__content-part header__content--left">
+      <div class="hamburger hamburger--js"><span></span></div>
+      <div class="main-menu main-menu--left" role="navigation">
+        {% assign menu = linklists.custom-menu-header-left %}
+        <ul>
+          {% for link in menu.links %}
+          {% if link.links != blank %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+              {% include 'icon-arrow-down' %}
+            </a>
+            <ul>
+              {% for childlink in link.links %}
+              <li>
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% else %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <a href="/" class="logo">
+      {% include 'logo' %} 
+    </a> 
+    <div class="header__content-part header__content--right">
+      <div class="main-menu main-menu--right" role="navigation">
+        {% assign menu = linklists.custom-menu-header-right %}
+        <ul>
+          {% for link in menu.links %}
+          {% if link.links != blank %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+              {% include 'icon-arrow-down' %}
+            </a>
+            <ul>
+              {% for childlink in link.links %}
+              <li>
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% else %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+
+
+
+      {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+      <a href="/account" class="user-enter">
+        {% include 'icon-user' %}
+        <span class="icon__fallback-text">{{ 'layout.customer.account' | t }}</span>
+      </a>
+      {% else %}
+      <a href="/account/login" class="user-enter">
+        {% include 'icon-user' %}
+        <span class="icon__fallback-text">{{ 'layout.customer.log_in' | t }}</span>
+      </a>
+      {% endif %}
+      {% endif %}
+
+      {% include "go-cart-button" %}
+
+
+    </div>
+
+
+
+    <div class="header__mmenu" style="display: none;">
+      <div class="header__mmenu-box">
+        <div class="header__menu-visual">
+
+         {% for block in section.blocks %}  
+         {%- assign product = all_products[block.settings.product-id] -%}
+         {% if product != blank %}
+         <div class="header-prod">
+          {%- assign current_variant = product.selected_or_first_available_variant -%}
+          <a href="{{ product.url | default: "#" }}" class="header-prod__img">
+            {% for tag in product.tags %}
+            {% if tag contains 'best_seller' %}
+            <div class="collection-list__item-status">
+              <div class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                BEST SELLER
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            {% if product.metafields.pdp_image2.pdp_image2 != blank %}
+            <img class="lazyimg" src="#" data-src="{{product.metafields.pdp_image2.pdp_image2}}" alt="asdf">
+            {% else %}
+            <img class="lazyimg" src="#" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="asfd">
+            {% endif %}
+
+          </a>
+          <div class="header-prod__info">
+
+           {% for tag in product.tags %}
+           {% if tag contains 'best_seller' %}
+           <div class="collection-list__item-status">
+            <div class="status-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+              BEST SELLER
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+          <a href="{{ product.url | default: '#' }}" class="header-prod__title">
+            {{product.title}}
+          </a>
+          <p>
+            {{ product.type}}
+          </p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+    <div class="header__mmenu-lists">
+      {% for block in section.blocks %}
+      {%- assign header_linklist = block.settings.header_menus -%}
+      {% if header_linklist != blank %}
+      <div class="menu-block">
+        <div class="menu-title">
+         {{linklists[header_linklist].title}}
+         {% include 'menu-arrow' %}
+       </div>
+       <ul class="menu-list">
+        {% for link in linklists[header_linklist].links %}
+        {% if link.links != blank %}
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title }}
+            {% include 'icon-arrow-down' %}
+          </a>
+          <ul>
+            {% for childlink in link.links %}
+            <li>
+              <a href="{{ childlink.url }}">
+                {{ childlink.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
+  </div>
+</div>
+
+</div>
+
+</div>
+  <style>
+    #preview-bar-iframe{
+            display: block!important;
+    }
+</style>
+</header>
+
+
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Announcement bar"
+  },
+  {
+    "type": "checkbox",
+    "id": "announcement_bar_enabled",
+    "label": "Show announcement",
+    "default": false
+  },
+
+  {
+    "type": "text",
+    "id": "announcement_bar_text",
+    "label": "Announcement text",
+    "default": "Announce something here"
+  },
+  {
+    "type": "url",
+    "id": "announcement_bar_link",
+    "label": "Announcement link",
+    "info": "Optional"
+  },
+  {
+    "type": "header",
+    "content": "Header"
+  }
+
+  ],
+  "blocks": [
+  {
+    "type": "image",
+    "name": "Item", 
+    "settings": [
+    {
+      "type":      "product",
+      "id":        "product-id",
+      "label":     "Product"
+    }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "Menus",
+    "settings": [
+    {
+      "type": "link_list",
+      "id": "header_menus",
+      "label": "Header menu"
+    }
+    ]
+
+  }
+  ]
+} 
+{% endschema %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "{{ shop.name }}",
+    {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+    {% endif %}
+    "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+    ],
+    "url": "{{ shop.url }}{{ page.url }}"
+  }
+</script>
+
+{% if template.name == 'index' %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ shop.name }}",
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ shop.url }}/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+{% endif %}

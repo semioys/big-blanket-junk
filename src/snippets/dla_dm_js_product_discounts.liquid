@@ -1,0 +1,1 @@
+DLA.DM.products[{{ dm_orig_product.id }}]={ {% for dm_orig_variant in dm_orig_product.variants %}{{ dm_orig_variant.id }}:'{% render 'dla_dm_discount_settings', dm_orig_product: dm_orig_product, dm_orig_variant: dm_orig_variant %}'{% unless forloop.last == true %},{% endunless %}{% endfor %} };

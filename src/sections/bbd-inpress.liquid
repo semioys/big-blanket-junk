@@ -1,0 +1,186 @@
+<style>
+  .sync-sl{
+    color: {{section.settings.font_color}};
+    background-color: {{section.settings.background_color}};
+  }
+  .slider-nav__item::before{
+    background-color: {{section.settings.accent_color}};
+  }
+  .slider-nav__item{
+    border-bottom: 1px solid {{section.settings.accent_color}};
+  }
+</style>
+
+<div class="sync-sl">
+  {% if section.settings.label_text != blank %}
+  <div class="sync-sl__subtitle">
+    {{section.settings.label_text}}
+  </div>
+  {% endif %} 
+  <div class="slider-for swiper-container">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+      <div class="swiper-slide">
+        <div class="slider-for__item">
+          <div class="sync-sl__title">
+            {{ block.settings.snc_text }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="slider-for--prev sl-btn sl-btn--prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.596 240.822"><path d="M 57.633,129.007 165.93,237.268 c 4.752,4.74 12.451,4.74 17.215,0 4.752,-4.74 4.752,-12.439 0,-17.179 L 83.438,120.418 183.133,20.747 c 4.752,-4.74 4.752,-12.439 0,-17.191 -4.752,-4.74 -12.463,-4.74 -17.215,0 L 57.621,111.816 c -4.679,4.691 -4.679,12.511 0.012,17.191 z" transform="translate(-54.113 -.001)"/></svg></div>
+    <div class="slider-for--next sl-btn sl-btn--next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.596 240.822"><path d="M 183.189,111.816 74.892,3.555 c -4.752,-4.74 -12.451,-4.74 -17.215,0 -4.752,4.74 -4.752,12.439 0,17.179 l 99.707,99.671 -99.695,99.671 c -4.752,4.74 -4.752,12.439 0,17.191 4.752,4.74 12.463,4.74 17.215,0 L 183.201,129.006 c 4.68,-4.691 4.68,-12.511 -0.012,-17.19 z" transform="translate(-54.113)"/></svg></div>
+  </div>
+
+
+  <div class="slider-nav swiper-container">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+      <div class="swiper-slide">
+        <div class="slider-nav__item">
+          {% if block.settings.snc_img != blank %} 
+          <div class="slider-nav__item-img">
+            <img src="{{ block.settings.snc_img | img_url:'master' }}" alt="asdf">
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<script>
+  window.onload = function() {
+    var galleryThumbs = new Swiper('.slider-nav', {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      freeMode: false,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+      loop: false,
+      breakpoints: {
+        320: {
+         loop: false,
+         slidesPerView: 4,
+         spaceBetween: 3,
+       },
+       576: {
+         loop: false,
+         slidesPerView: 4,
+         spaceBetween: 10,
+       }
+     }
+   });
+    var galleryTop = new Swiper('.slider-for', {
+      spaceBetween: 10,
+      freeMode: false,
+      thumbs: {
+        swiper: galleryThumbs
+      },
+      loop: true,
+      {% if section.settings.sl_autoplay %}
+      autoplay: {
+        delay: {{ section.settings.time_func | times: 1000 | round }},
+        disableOnInteraction: false,
+      },
+      {% endif %}
+      breakpoints: {
+        320: {
+         loop: true,
+       },
+       768: {
+        navigation: {
+         loop: true,
+         prevEl: '.slider-for--prev',
+         nextEl: '.slider-for--next',
+       }
+     }
+   }
+ });
+  };
+
+</script>
+
+<style>
+  .slider-nav .swiper-slide-thumb-active .slider-nav__item::before{
+    animation: slideTo {{section.settings.time_func}}s linear both;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Press Section",
+  "max_blocks": 5,
+  "settings": [
+  {
+    "id": "label_text",
+    "type": "text",
+    "label": "Label"
+  },
+  {
+   "type": "color",
+   "id": "background_color",
+   "label": "Background color",
+   "default": "#F7C945"
+ },
+ {
+   "type": "color",
+   "id": "font_color",
+   "label": "Font color",
+   "default": "#000"
+ },
+ {
+   "type": "color",
+   "id": "accent_color",
+   "label": "Accent color",
+   "default": "#000"
+ },
+ {
+  "id": "time_func",
+  "type": "text",
+  "label": "Timing function",
+  "default": "2",
+  "info": "in second"
+},
+{
+ "type": "checkbox",
+ "id": "sl_autoplay",
+ "default": false,
+ "label": "Auto play slider"
+}
+],
+"blocks": [
+{
+  "type": "select",
+  "name": "Item",
+  "settings": [
+  {
+    "id": "snc_text",
+    "type": "text",
+    "label": "Heading"
+  },
+  {
+    "id": "snc_img",
+    "type": "image_picker",
+    "label": "Image"
+  }
+  ]
+
+}
+
+],
+"presets": [
+{
+  "name": "Press Section",
+  "category": "Blocks"
+}
+]
+}
+{% endschema %}

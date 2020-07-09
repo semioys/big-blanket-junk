@@ -1,0 +1,295 @@
+{% comment %}
+The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %} 
+
+{% section 'product-template' %}
+
+
+{% if product.metafields.show_block.key_show_block  contains "true" %}
+
+<div class="equal-block equal-block--guarantee {% if product.metafields.img_fl.img_fl contains 'true' %} equal-block--full-img {% endif %}{% if product.metafields.img_irev.img_irev contains 'true' %}equal-block--inverse{% endif %}">
+  <div class="equal-block__part equal-block__part--left">
+    <div class="equal-block__part-content text-align-{{product.metafields.img_pos.img_pos}}">
+      <h2>
+        {{product.metafields.title.text_title}}
+      </h2> 
+      <div class="subtitle">
+        {{product.metafields.desc.desc}}
+      </div>
+      <div class="options-list">
+        {{product.metafields.asdf.asdf}}
+      </div>
+    </div>
+  </div>
+
+
+
+  {% if product.metafields.meta_vid.meta_vid != blanket %}
+  <div class="equal-block__part equal-block__part--right"> 
+    <div class="equal-block__media">
+      <video class="top-block__video" src="{{product.metafields.meta_vid.meta_vid}}" preload="metadata" autoplay loop playsinline muted></video>
+    </div>
+  </div>
+  
+  {% else %}
+  {% if product.metafields.img_fl.img_fl  contains 'true' %} 
+  <div class="equal-block__part equal-block__part--media" style="background-image: url('{{product.metafields.block_image.image }}')" ></div>
+  {%else%}
+  <div class="equal-block__part ">
+    <div class="equal-block__media">
+      <img src="{{product.metafields.block_image.image}}" alt="img">
+    </div>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+
+
+</div>
+{% endif %}
+
+
+
+
+{% if product.metafields.show_block2.key_show_block2  contains "true" %}
+
+<div class="equal-block equal-block--guarantee {% if product.metafields.img_fl2.img_fl2 contains 'true' %} equal-block--full-img {% endif %}{% if product.metafields.img_irev2.img_irev2 contains 'true' %}equal-block--inverse{% endif %}">
+  <div class="equal-block__part equal-block__part--left">
+    <div class="equal-block__part-content text-align-{{product.metafields.img_pos2.img_pos2}}">
+      <h2>
+        {{product.metafields.title2.text_title2}}
+      </h2> 
+      <div class="subtitle">
+        {{product.metafields.desc2.desc2}}
+      </div>
+      <div class="options-list">
+        {{product.metafields.asdf2.asdf2 }}
+      </div>
+    </div>
+  </div>
+
+  {% if product.metafields.meta_vid1.meta_vid1 != blanket %}
+  <div class="equal-block__part equal-block__part--right"> 
+    <div class="equal-block__media">
+      <video class="top-block__video" src="{{product.metafields.meta_vid1.meta_vid1}}" preload="metadata" autoplay loop playsinline muted></video>
+    </div>
+  </div>
+  
+  {% else %}
+  {% if product.metafields.img_fl2.img_fl2 contains 'true' %} 
+  <div class="equal-block__part equal-block__part--media" style="background-image: url('{{ product.metafields.block_image2.image2 }}')" ></div>
+  {%else%}
+  <div class="equal-block__part ">
+    <div class="equal-block__media">
+      <img src="{{product.metafields.block_image2.image2}}" alt="img">
+    </div>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+</div>
+{% endif %}
+
+
+
+
+{% if product.metafields.show_block5.key_show_block5  contains "true" %} 
+
+<div class="equal-block equal-block--last equal-block--last-in-page equal-block--guarantee {% if product.metafields.img_fl5.img_fl5 contains 'true' %} equal-block--full-img {% endif %}{% if product.metafields.img_irev5.img_irev5 contains 'true' %}equal-block--inverse{% endif %}">
+  <div class="equal-block__part equal-block__part--left">
+    <div class="equal-block__part-content text-align-{{product.metafields.img_pos5.img_pos5}}">
+      <h2>
+        {{product.metafields.title5.text_title5}} 
+      </h2> 
+      <div class="subtitle">
+        {{product.metafields.desc5.desc5}} 
+      </div>
+      <div class="options-list">
+        {{product.metafields.asdf5.asdf5 }}
+      </div>
+    </div>
+  </div>
+
+  {% if product.metafields.meta_vid4.meta_vid4 != blanket %}
+  <div class="equal-block__part equal-block__part--right"> 
+    <div class="equal-block__media">
+      <video class="top-block__video" src="{{product.metafields.meta_vid4.meta_vid4}}" preload="metadata" autoplay loop playsinline muted></video>
+    </div>
+  </div>
+  
+  {% else %}
+  {% if product.metafields.img_fl5.img_fl5 contains 'true' %} 
+  <div class="equal-block__part equal-block__part--media" style="background-image: url('{{ product.metafields.block_image5.image5 }}')" ></div>
+  {%else%}
+  <div class="equal-block__part ">
+    <div class="equal-block__media">
+      <img src="{{product.metafields.block_image5.image5}}" alt="img">
+    </div>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+</div>
+{% endif %}
+
+
+
+
+
+
+
+{% if product.metafields.show_block3.key_show_block3  contains "true" %}
+
+<div class="equal-block equal-block--guarantee {% if product.metafields.img_fl3.img_fl3 contains 'true' %} equal-block--full-img {% endif %}{% if product.metafields.img_irev3.img_irev3 contains 'true' %}equal-block--inverse{% endif %}">
+  <div class="equal-block__part equal-block__part--left">
+    <div class="equal-block__part-content text-align-{{product.metafields.img_pos3.img_pos3}}">
+      <h2>
+        {{product.metafields.title3.text_title3}}
+      </h2> 
+      <div class="subtitle">
+        {{product.metafields.desc3.desc3}} 
+      </div>
+      <div class="options-list">
+        {{product.metafields.asdf3.asdf3 }}
+      </div>
+    </div>
+  </div>
+
+  {% if product.metafields.meta_vid2.meta_vid2 != blanket %}
+  <div class="equal-block__part equal-block__part--right"> 
+    <div class="equal-block__media">
+      <video class="top-block__video" src="{{product.metafields.meta_vi2.meta_vid2}}" preload="metadata" autoplay loop playsinline muted></video>
+    </div>
+  </div>
+  
+  {% else %}
+  {% if product.metafields.img_fl3.img_fl3 contains 'true' %} 
+  <div class="equal-block__part equal-block__part--media" style="background-image: url('{{ product.metafields.block_image3.image3 }}')" ></div>
+  {%else%}
+  <div class="equal-block__part ">
+    <div class="equal-block__media">
+      <img src="{{product.metafields.block_image3.image3}}" alt="img">
+    </div>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+
+
+</div>
+{% endif %}
+
+
+
+
+
+
+{% if product.metafields.show_block4.key_show_block4  contains "true" %}
+
+<div class="equal-block equal-block--bd0 equal-block--last equal-block--guarantee {% if product.metafields.img_fl4.img_fl4 contains 'true' %} equal-block--full-img {% endif %}{% if product.metafields.img_irev4.img_irev4 contains 'true' %}equal-block--inverse{% endif %}">
+  <div class="equal-block__part equal-block__part--left">
+    <div class="equal-block__part-content text-align-{{product.metafields.img_pos4.img_pos4}}">
+      <h2>
+        {{product.metafields.title4.text_title4}}
+      </h2> 
+      <div class="subtitle">
+        {{product.metafields.desc4.desc4}} 
+      </div>
+      <div class="options-list">
+        {{product.metafields.asdf4.asdf4 }}
+      </div>
+    </div>
+  </div>
+
+  {% if product.metafields.meta_vid3.meta_vid3 != blanket %}
+  <div class="equal-block__part equal-block__part--right"> 
+    <div class="equal-block__media">
+      <video class="top-block__video" src="{{product.metafields.meta_vid3.meta_vid3}}" preload="metadata" autoplay loop playsinline muted></video>
+    </div>
+  </div>
+  
+  {% else %}
+  {% if product.metafields.img_fl4.img_fl4 contains 'true' %} 
+  <div class="equal-block__part equal-block__part--media" style="background-image: url('{{ product.metafields.block_image4.image4 }}')" ></div>
+  {%else%}
+  <div class="equal-block__part ">
+    <div class="equal-block__media">
+      <img src="{{product.metafields.block_image4.image4}}" alt="img">
+    </div>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+</div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% section 'bbd-inpress' %}
+
+
+{% comment %}{% section 'insta-block' %}{% endcomment %}
+<div class="product-gallery">
+  <div
+  class="yotpo yotpo-pictures-widget"
+  data-gallery-id="5ebc24843652fe09439eabfc"
+  data-product-id="{{ product.id }}">
+</div>
+</div>
+{% section 'featured-collection' %}
+
+
+
+
+
+
+
+{% comment %}{% section 'f-prod' %}{% endcomment %}
+{% section 'product-recommendations' %}
+
+
+
+<div class="prod-rev">
+  <div class="container">
+    <h2>
+      Customer Reviews
+    </h2>
+
+    <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}" data-price="{{ variant.price | money_without_currency }}"
+    data-currency=“{{ shop.currency }}” data-description=“{{ product.description | escape }}“>
+    {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+    {%- assign time_now = ‘now’ | date: ‘%s’ %}
+    {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: ‘%s’ %}
+    {%- assign diff_seconds_from_live = time_now | minus: yotpo_live_time %}
+    {%- assign yotpo_main_widget_last_updated = product.metafields.yotpo.main_widget_update_time | date: ‘%s’ %}
+    {%- assign diff_seconds_from_last_main_widget_update = time_now | minus: yotpo_main_widget_last_updated %}
+    {%- if yotpo_live_time and diff_seconds_from_live < 86400 or yotpo_main_widget_last_updated and diff_seconds_from_last_main_widget_update < 86400 -%}
+    {%- assign yotpo_main_widget_obsolete = false %}
+    {%- else %}
+    {%- assign yotpo_main_widget_obsolete = true %}
+    {%- endif %}
+    {%- if yotpo_offload_content == ‘yes’ and yotpo_main_widget_obsolete != true -%}
+    {%- for field in product.metafields.yotpo_reviews -%}
+    {{ field | last }}
+    {%- endfor -%}
+    {%- endif %}
+  </div>
+
+
+</div>
+
+</div>
+
+
+

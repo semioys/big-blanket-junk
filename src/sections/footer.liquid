@@ -1,0 +1,186 @@
+<footer class="footer"> 
+  <div class="container">
+    <div class="footer__box">
+      <div class="footer__media">
+        {% for block in section.blocks %}
+        {% if block.settings.footer_linklist2 != blank %}
+        <div class="footer__media-item">
+          {%- assign footer_linklist = block.settings.footer_linklist2 -%}
+          <div class="footer__title">
+            {{linklists[footer_linklist].title}}
+          </div>
+          <ul class="menu-list">
+            {% for link in linklists[footer_linklist].links %}
+            {% if link.links != blank %}
+            <li>
+              <a href="{{ link.url }}">
+                {{ link.title }}
+                {% include 'icon-arrow-down' %}
+              </a>
+              <ul>
+                {% for childlink in link.links %}
+                <li>
+                  <a href="{{ childlink.url }}">
+                    {{ childlink.title }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            {% else %}
+            <li>
+              <a href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <div class="footer__media-item footer__media-item--sc">
+          <div class="footer__title">
+            Social
+          </div>
+          {%- assign social_accounts = 'Facebook, Instagram, Twitter, Pinterest, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+          <ul class="sc-list">
+            {% for social in social_accounts %}
+            {%- assign social_handle = social | handleize -%}
+            {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+            {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+
+            {% if settings[social_link] != blank %}
+            <li>
+              <a target="_blank" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                {% include social_icon %}
+                <span class="icon-fallback-text">{{ social }}</span>
+              </a>
+            </li>
+            {% endif %}
+
+            {% endfor %}
+          </ul>
+
+        </div>
+      </div>
+      <div class="footer__newsleter">
+        <div class="footer__title">
+         Be the first to know
+       </div> 
+       <div class="site-footer__newsletter">
+         {%- assign formId = 'ContactFooter' -%}
+         {% form 'customer', id: formId, novalidate: 'novalidate' %}
+         {%- if form.posted_successfully? -%}
+         <p class="form-message form-message--success" tabindex="-1" data-form-status>
+          {{ 'general.newsletter_form.confirmation' | t }}
+        </p>
+        {% else %}
+        <div class="footer__newsleter-subtitle">Subscribe and get exclusive updates on limited product releases, events, private sales and more.</div>
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="input-group {% if form.errors %} input-group--error{% endif %}">
+          <input type="email"
+          name="contact[email]"
+          id="{{ formId }}-email"
+          class="input-group__field newsletter__input{% if form.errors %} input--error{% endif %}"
+          value="{{ form.email }}"
+          placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+          aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
+          aria-required="true"
+          required
+          autocorrect="off"
+          autocapitalize="off" 
+          {% if form.errors %}
+          aria-invalid="true"
+          aria-describedby="{{ formId }}-email-error"
+          data-form-status
+          {% endif %}>
+          <button type="submit" class="newsletter__submit" name="commit" id="Subscribe">
+            <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+            {% include 'next-ar' %}
+          </button>
+        </div>
+        {% if form.errors contains 'email' %}
+        <span id="{{ formId }}-email-error" class="input-error-message">
+          <span class="visually-hidden">{{ 'general.accessibility.error'}} </span>
+          {% comment %}{% include 'icon-error' %}{% endcomment %}
+          <span class="site-footer__newsletter-error"> {{ form.errors.messages['email'] }}.</span>
+        </span>
+        {% endif %}
+        {%- endif -%}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %}  {% if section.settings.show_payment_icons %}
+  {% unless shop.enabled_payment_types == empty %}
+  <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
+  <ul class="payment-icons">
+    {% for type in shop.enabled_payment_types %}
+    <li>
+      {{ type | payment_type_svg_tag: class: 'icon' }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endunless %}
+  {% endif %}{% endcomment %}
+
+
+
+
+
+
+  {%- assign footer_linklist = section.settings.footer_linklist -%}
+  {% if linklists[footer_linklist].links.size > 0 %}
+  <ul>
+    {% for link in linklists[footer_linklist].links %}
+    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>  
+  {% endif %}
+
+  <div class="copyright">
+    &copy;Big Blanket Co {{ 'now' | date: "%Y" }}
+   {% comment %}{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}{% endcomment %}
+ </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 3,
+  "settings": [
+  {
+    "type": "link_list",
+    "id": "footer_linklist",
+    "label": "First menu",
+    "default": "footer"
+  },
+  {
+    "type": "checkbox",
+    "id": "show_payment_icons",
+    "label": "Show payment icons",
+    "default": false
+  }
+  ],
+  "blocks": [
+  {
+    "type": "select",
+    "name": "Menu",
+    "settings": [
+    {
+      "type": "link_list",
+      "id": "footer_linklist2",
+      "label": "Footer menu"
+    }
+    ]
+
+  }
+
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,178 @@
+{% if section.settings.video_link == blank %}
+<style>
+ .top-block{
+  color:{{ section.settings.text_color }};
+}
+@media only screen and (min-width: 576px) {
+  .top-block{
+    /*background-image: url({{ section.settings.bg_img | img_url: 'master' }});*/
+  }
+}
+@media only screen and (max-width: 576px) {
+ .top-block{
+   background-image: url({{ section.settings.bg_img_mg | img_url: 'master' }}) !important;
+ }
+}
+</style>
+{% endif %}
+<style>
+  .top-block__action .btn{
+    color: {{ section.settings.button_color }} ;
+    border-color: {{ section.settings.button_color }};
+  }
+  .top-block__action .btn:hover{
+    color: {{ section.settings.button_color_hover }};
+    background-color: {{ section.settings.button_color }};
+  }
+</style>
+<div class="top-block lazyimg" data-src="{{ section.settings.bg_img | img_url: 'master' }}">
+ {% if section.settings.video_link != blank %}
+ <video class="top-block__video" src="{{ section.settings.video_link}}" preload="metadata" autoplay loop playsinline muted></video>
+ {% endif %}
+ <div class="container">
+  <div class="top-block__box top-block__box--{{section.settings.text_position}}">
+    <h1> 
+      {{ section.settings.h1_text }}
+    </h1>
+
+    {% if section.settings.body_text != blank %}
+    <p>
+      {{section.settings.body_text}} 
+    </p>
+    {% endif %}
+
+    <div class="top-block__action">
+      <a href="{{ section.settings.main_link }}" class="btn">
+        {{section.settings.main_link_name}}
+      </a>
+    </div>
+  </div>
+
+  <div class="top-block__imgs" style="color:{{section.settings.logo_label_color}};">
+    <div class="top-block__imgs-title">
+      {{section.settings.logo_text}}
+    </div>
+    <div class="top-block__imgs-list">
+      {% for block in section.blocks %}
+      <div class="top-block__img">
+        {% comment %}{{ block.settings.img_src}}{% endcomment %}
+        <img src="{{ block.settings.img_src_ico | img_url: 'master' }}" alt="img">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+{% schema %}
+{
+  "name": "Banner",
+  "max_blocks": 6,
+  "settings": [
+  {
+    "id": "bg_img",
+    "type": "image_picker",
+    "label": "Image"
+  },
+  {
+    "id": "bg_img_mg",
+    "type": "image_picker",
+    "label": "Image mobile"
+  },
+  {
+    "id": "video_link",
+    "type": "text",
+    "label": "Video link",
+    "info": "For upload video go to 'Settings -> Files -> Upload files(top right corner)' and then copy video link"
+  },
+  {
+    "id": "h1_text",
+    "type": "text",
+    "label": "Heading"
+  },
+  {
+   "id": "body_text",
+   "type": "textarea",
+   "label": "Body text"
+ },
+ {
+  "id": "main_link_name",
+  "type": "text",
+  "label": "Cta",
+  "default": "Shop Now"
+},
+{
+  "id": "main_link",
+  "type": "url",
+  "label": "Cta link"
+},
+{
+ "id": "text_position",
+ "type": "radio",
+ "label": "Text position",
+ "default":   "center",
+ "options": [
+ { "value": "left", "label": "Left"},
+ { "value": "center", "label": "Center"},
+ { "value": "right", "label": "Right"}
+ ]
+},
+{
+  "id": "text_color",
+  "type": "color",
+  "label": "Text color",
+  "default": "#fff"
+},
+{
+  "id": "button_color",
+  "type": "color",
+  "label": "Button color",
+  "default": "#fff"
+},
+{
+  "id": "button_color_hover",
+  "type": "color",
+  "label": "Button color hover",
+  "default": "#fff"
+},
+{
+  "id": "logo_text",
+  "type": "text",
+  "label": "Logo text"
+},
+{
+  "id": "logo_label_color",
+  "type": "color",
+  "label": "Logo label color",
+  "default": "#fff"
+}
+
+
+],
+"blocks": [
+{
+  "type": "select",
+  "name": "Image",
+  "settings": [
+  {
+    "id": "img_src_ico",
+    "type": "image_picker",
+    "label": "Logo icon"
+  }
+  ]
+}
+
+],
+"presets": [
+{
+  "name": "Banner",
+  "category": "Blocks"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,77 @@
+<div class="insta-block">
+  <div class="container">
+    {% if section.settings.label_text != blank %}
+    <div class="insta-block__subtitle">
+      {{section.settings.label_text}}
+    </div> 
+    {% endif %}
+    {% if section.settings.heading != blank %}
+    <div class="sync-sl__title">
+      {{section.settings.heading}} 
+    </div>
+    {% endif %} 
+
+  </div>
+
+  {% comment %} <div class="insta-block__sl">
+
+  <a href="#" class="insta-block__sl-item">
+    <img src="{{ 'inst_1.jpg' | asset_img_url: 'master' }}" alt="img">
+  </a>
+  <a href="#" class="insta-block__sl-item">
+    <img src="{{ 'inst_2.jpg' | asset_img_url: 'master' }}" alt="img">
+  </a>  
+  <a href="#" class="insta-block__sl-item">
+    <img src="{{ 'inst_3.jpg' | asset_img_url: 'master' }}" alt="img">
+  </a>
+  <a href="#" class="insta-block__sl-item">
+    <img src="{{ 'inst_4.jpg' | asset_img_url: 'master' }}" alt="img">
+  </a>
+  </div>{% endcomment %}
+
+  {% comment %}
+  <div class="yotpo yotpo-reviews-carousel" 
+       data-background-color="transparent" 
+       data-mode="manual" 
+       data-type="both" 
+       data-review-ids="169686967,169687106,169566776,169584355" 
+       data-show-bottomline="1" 
+       data-autoplay-enabled="1" 
+       data-autoplay-speed="3000" 
+       data-show-navigation="1">&nbsp;</div>
+
+  {% endcomment %}
+
+
+  <div
+       class="yotpo yotpo-pictures-widget"
+       data-gallery-id="5eb2c5d3e316700007009364">
+  </div>
+</div>
+
+
+{% schema %}
+{
+"name": "UGC",
+"settings": [
+{
+"id": "label_text",
+"type": "text",
+"label": "Label"
+},
+{
+"id": "heading",
+"type": "text",
+"label": "Heading"
+}
+],
+"presets": [
+{
+"name": "UGC",
+"category": "Blocks"
+} 
+]
+}
+{% endschema %}
+
+

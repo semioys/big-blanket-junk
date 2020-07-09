@@ -1,0 +1,180 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>
+
+  <script type="text/javascript">
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/1gEu5djOI6EPDIgKro48VG353JvWpbbcQVXgYd4F/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+  </script>
+  <!-- Noindex Pages --> 
+  {% if handle contains 'privacy-policy' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'terms-of-service' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+  <!-- End Noindex Pages -->  
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+
+  {%- capture seo_title -%}
+  {{ page_title }}
+  {%- if current_tags -%}
+  {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+  {%- endif -%}
+  {%- if current_page != 1 -%}
+  &ndash; {{ 'general.meta.page' | t: page: current_page }}
+  {%- endif -%}
+  {%- assign escaped_page_title = page_title | escape -%}
+  {%- unless escaped_page_title contains shop.name -%}
+  &ndash; {{ shop.name }}
+  {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  {%- if page_description -%} 
+  <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  {{ 'libs.css' | asset_url | stylesheet_tag }} 
+  {{ 'index.css' | asset_url | stylesheet_tag }}
+  {{ 'main.css' | asset_url | stylesheet_tag }} 
+  {% comment %}<script src="https://code.jquery.com/jquery-2.2.4.min.js" i crossorigin="anonymous"></script>{% endcomment %}
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+  {{ content_for_header }}
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+
+  {% section 'header' %}
+
+  <main role="main" id="MainContent">
+    {{ content_for_layout }} 
+  </main>
+
+  {% section 'footer' %}
+
+  {% comment %}<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>{% endcomment %}
+  {% comment %}<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>{% endcomment %}
+  <script src="{{ 'libs.min.js' | asset_url }}"></script> 
+  <script type="text/javascript" src="//cdn.jsdelivr.net/gh/eisbehr-/jquery.lazy@1.7.10/jquery.lazy.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery-lazy@1.7.10/plugins/jquery.lazy.picture.min.js"></script>
+  <script src="{{ 'common.js' | asset_url }}"></script> 
+  {%- section 'go-cart' -%}
+  <script src="{{ 'index.js' | asset_url }}"></script>
+
+  <script>var shareasaleShopifySSCID=shareasaleShopifyGetParameterByName("sscid");function shareasaleShopifySetCookie(e,a,o,i,r){if(e&&a){var s,S=i?"; path="+i:"",h=r?"; domain="+r:"",t="";o&&((s=new Date).setTime(s.getTime()+o),t="; expires="+s.toUTCString()),document.cookie=e+"="+a+t+S+h}}function shareasaleShopifyGetParameterByName(e,a){a||(a=window.location.href),e=e.replace(/[\[\]]/g,"\\$&");var o=new RegExp("[?&]"+e+"(=([^&#]*)|&|#|$)").exec(a);return o?o[2]?decodeURIComponent(o[2].replace(/\+/g," ")):"":null}shareasaleShopifySSCID&&shareasaleShopifySetCookie("shareasaleShopifySSCID",shareasaleShopifySSCID,94670778e4,"/");</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-753943977"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-753943977', {'send_page_view': false});
+  </script>
+
+  <!-- Pinterest Tag -->
+  <script type="text/javascript">
+    !function(e){if(!window.pintrk){window.pintrk=function()
+      {window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}
+      ("https://s.pinimg.com/ct/core.js"); 
+
+      pintrk('load','2613210363845', { em: '{{ customer.email }}', });
+      pintrk('page');
+    </script> 
+    <noscript> 
+      <img height="1" width="1" style="display:none;" alt=""
+      src="https://ct.pinterest.com/v3/?tid=2613210363845&noscript=1" /> 
+    </noscript>
+    <!-- end Pinterest Tag -->
+
+    <!-- google dynamic remarketing tag for theme.liquid -->
+    {% if template contains 'product' %}
+    <script type="text/javascript">
+      var json_product = {% comment %}DLADMORIG{% raw %}{{ product | json }}{% endraw %}ENDDLADMORIG{% endcomment %}{% comment %}DLADMNEW{% endcomment %}{% capture dm_jsoned %}{% render 'dla_dm_json', dm_json_entity: product %}{% endcapture %}{{ dm_jsoned }}{% comment %}ENDDLADMNEW{% endcomment %};
+    </script>
+    <script>
+      var ecomm_prodid=[];
+      for(var i=0;i<json_product.variants.length;i++)
+        ecomm_prodid.push('shopify_US_{{product.id}}_'+json_product.variants[i].id);
+    </script>
+    <script type="text/javascript">
+      var google_tag_params = {
+        ecomm_prodid: ecomm_prodid,
+        ecomm_pagetype: 'product',
+        ecomm_totalvalue: parseFloat('{% comment %}DLADMORIG{% raw %}{{ product.price | money_without_currency | remove: ","}}{% endraw %}ENDDLADMORIG{% endcomment %}{% comment %}DLADMNEW{% endcomment %}{% unless dm_new_price and dm_new_price != 0 %}{% assign dm_page_type = template | split: '.' | first %}{% if dm_page_type == 'product' %}{% if product.id and product.id != '' %}{% capture dm_new_price %}{% render 'dla_dm_product_price_min', dm_orig_product: product %}{% endcapture %}{% assign dm_new_price = dm_new_price | abs %}{% endif %}{% endif %}{% endunless %}{% assign dm_new_price = dm_new_price | default: product.price %}{{ dm_new_price | money_without_currency | remove: ","}}{% assign dm_new_price = 0 %}{% comment %}ENDDLADMNEW{% endcomment %}')
+      };
+    </script>
+    {% elsif template contains 'collection' %}
+    <script type="text/javascript">
+      var google_tag_params = {
+        ecomm_pagetype: 'category'
+      };
+    </script>
+    {% elsif template contains 'cart' %}
+    <script type="text/javascript">
+      var id = new Array();
+      {% for item in cart.items %}
+      id.push('shopify_US_{{item.product.id}}_{{item.variant.id}}');
+      {% endfor %}
+
+      var google_tag_params = {
+       ecomm_prodid: id,
+       ecomm_pagetype: 'cart',
+       ecomm_totalvalue: parseFloat('{% comment %}DLADMORIG{% raw %}{{ cart.total_price | money_without_currency | remove: ","}}{% endraw %}ENDDLADMORIG{% endcomment %}{% comment %}DLADMNEW{% endcomment %}{% capture dm_cart_final_total %}{% render 'dla_dm_cart_final_total' %}{% endcapture %}{% assign dm_cart_final_total = dm_cart_final_total | abs %}{% assign dm_cart_final_total = dm_cart_final_total | default: cart.total_price %}{{ dm_cart_final_total | money_without_currency | remove: ","}}{% assign dm_cart_final_total = 0 %}{% comment %}ENDDLADMNEW{% endcomment %}')
+     };
+   </script>
+   {% elsif template contains 'search' %}
+   <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'searchresults'
+    };
+  </script>
+  {% elsif template contains 'index' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'home'
+    };
+  </script>
+  {% else %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'other'
+    };
+  </script>
+  {% endif %}
+  <script>
+    gtag('event', 'page_view', {'send_to': 'AW-753943977',
+      'ecomm_prodid':window.google_tag_params.ecomm_prodid,
+      'ecomm_pagetype': window.google_tag_params.ecomm_pagetype,
+      'ecomm_totalvalue':window.google_tag_params.ecomm_totalvalue
+    });
+  </script>
+
+  <script 
+  async 
+  src="https://na-library.klarnaservices.com/lib.js"
+  data-client-id="c24cdce6-b18d-5151-a273-9738238cc1d4"
+  ></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,1 @@
+[{% for obj in dm_json_array %}{% render 'dla_dm_json_object', dm_json_object: obj %}{% unless forloop.last == true %},{% endunless %}{% endfor %}]

@@ -1,0 +1,1 @@
+{% assign total = 0 %}{% for line_item in cart.items %}{% capture item_price %}{% render 'dla_dm_cart_line_original_total', dm_orig_line_item: line_item %}{% endcapture %}{% assign item_price = item_price | abs %}{% assign total = total | plus: item_price %}{% endfor %}{{ total | round }}

@@ -1,0 +1,62 @@
+{% for block in section.blocks %}  
+{%- assign product = all_products[block.settings.product-id] -%}
+{% if product != blank %}
+<div class="header-prod" class="bbd-prod-sections">
+  <a href="{{ product.url | default: "#" }}" class="header-prod__img">
+    {% if product.metafields.pdp_image.pdp_image != blank %}
+    <img src="#" data-src="{{product.metafields.pdp_image.pdp_image}}" alt="asdf">
+    {%else%}
+    <img src="#" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="afs">
+    {% endif %}
+  </a>
+
+  <div class="header-prod__info">
+    <a href="{{ product.url | default: "#" }}" class="header-prod__title">
+      {{product.title}}
+    </a>
+    <p>
+      {{ product.type}}
+    </p>
+    {% for tag in product.tags %}
+    {% if tag contains 'best_seller' %}
+    <div class="collection-list__item-status">
+      <div class="status-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+        BEST SELLER
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+
+
+
+</div>
+{% endif %}
+
+{% endfor %}
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Products",
+  "blocks": [
+  {
+    "type": "text",
+    "name": "Product",
+    "settings": [
+    {
+      "type":      "product",
+      "id":        "product-id",
+      "label":     "Product"
+    }
+    ]
+  }
+  ]
+} 
+{% endschema %}

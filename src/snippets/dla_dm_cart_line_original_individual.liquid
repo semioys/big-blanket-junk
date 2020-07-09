@@ -1,0 +1,1 @@
+{% capture price %}{% render 'dla_dm_variant_price', dm_rounding: dm_rounding, dm_orig_variant: dm_orig_line_item.variant %}{% endcapture %}{% assign price = price | abs %}{% if dm_rounding %}{{ price | round }}{% else %}{{ price }}{% endif %}

@@ -1,0 +1,82 @@
+
+{% assign related_product_count = 3 %}
+{% assign product_collection = collection %}
+
+{% assign related_size = 0 %}
+
+{% if product %}
+{% assign related_products_string = product.metafields.rel_prod.rel_prod %}
+{% if related_products_string %}
+{% assign related_products_handles = related_products_string | split:'|' %}
+{% assign related_size = related_products_handles | size %}
+{% endif %}
+{% endif %}
+
+
+<div class="collection-list">
+
+  <div class="container">
+    {% if product.metafields.block.title != blank %}
+    <h2 class="collection-list__title">{{product.metafields.block.title}}</h2>
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <div class="collection-list__box">  
+      {% assign product_limit_plus_one = related_product_count | plus: 1 %}
+      {% assign product_iter = 1 %}
+      {% if related_size > 0 %}
+      {% for related_handle in related_products_handles limit: product_limit_plus_one %}
+      {% assign related_product = all_products[related_handle] %}
+      {% assign product_collection = collections['all'] %}
+      {% if related_product.handle %}
+      {% for coll in related_product.collections %}
+      {% unless coll.handle == 'all' or coll.handle contains 'frontpage' %}
+      {% assign product_collection = coll %}
+      {% endunless %}
+      {% endfor %}
+      {% endif %}
+      {% if related_product.handle and product.handle != related_product.handle and product_iter < product_limit_plus_one %}
+      {% include 'product-block' with related_product, product: related_product, collection: product_collection %}
+      {% assign product_iter = product_iter | plus: 1 %}
+      {% endif %}
+      {% endfor %}
+      {% else %}
+      {% for related_product in product_collection.products limit: product_limit_plus_one %}
+      {% if product.handle != related_product.handle and product_iter < product_limit_plus_one %}
+      {% include 'product-block' with related_product, product: related_product, collection: product_collection %}
+      {% assign product_iter = product_iter | plus: 1 %}
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}{% endcomment %}

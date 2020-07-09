@@ -1,0 +1,202 @@
+<div  id="ProductSection" data-section-id="{{ section.id }}" data-section-type="product-template">
+
+  <div class="product-single">
+    <div class="grid product-single__hero">
+      <div class="grid__item post-large--one-half">
+
+
+        <div class="product-single__photos">
+          {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+
+          {% for image in product.images %}
+
+
+          <img
+          class="image-zoom"
+          sizes="(min-width: 768px) 30vw, 100vw"
+          srcset="{{ image | img_url: '300x' }} 300w,
+          {{ image | img_url: '600x' }} 600w,
+          {{ image | img_url: '900x' }} 900w,
+          {{ image | img_url: '1200x' }} 1200w,
+          {{ image | img_url: '1500x' }} 1500w"
+          data-src="{{ image | product_img_url: 'large' }}"
+          data-zoom="{{ image | product_img_url: '1500x', scale: 2 }}"
+          alt="{{ image.alt | escape }}">
+
+
+          {% endfor %}
+
+        </div>
+
+
+        <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
+          {% for image in product.images %}
+          <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
+            <a data-image-id="{{ image.id }}" href="{{ image.src | img_url: '1024x1024' }}" class="product-single__thumbnail">
+              <img src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+
+
+
+
+
+
+      </div>
+      <div class="grid__item post-large--one-half">
+        {% if section.settings.product_vendor_enable %}
+        <span class="h3" itemprop="brand">{{ product.vendor }}</span>
+        {% endif %}
+        <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          {% assign variant = product.selected_or_first_available_variant %}
+
+          <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+          <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+          <div class="product-single__prices{% if shop.taxes_included or shop.shipping_policy.body != blank %} product-single__prices--policy-enabled{% endif %}">
+            <span id="PriceA11y" class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+            <span id="ProductPrice" class="product-single__price" itemprop="price" content="{{ product.price | divided_by: 100.00 }}">
+              {{ product.price | money }}
+            </span>
+
+            {% if product.compare_at_price > product.price %}
+            <span id="ComparePriceA11y" class="visually-hidden" aria-hidden="false">{{ 'products.product.sale_price' }}</span>
+            <s id="ComparePrice" class="product-single__sale-price">
+              {{ product.compare_at_price_max | money }}
+            </s>
+            {% else %}
+            <span id="ComparePriceA11y" class="visually-hidden" aria-hidden="true">{{ 'products.product.sale_price' }}</span> 
+            <s id="ComparePrice" class="product-single__sale-price hide">
+              {{ product.compare_at_price_max | money }}
+            </s>
+            {% endif %}
+
+            {% comment %}{% include 'product-unit-price', variant: variant, available: true %}{% endcomment %}
+
+          </div>
+
+          {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+          <div class="product-single__policies{% if product.has_only_default_variant and section.settings.product_quantity_enable == false %} product__policies--no-dropdowns{% endif %} rte">
+            {%- if shop.taxes_included -%}
+            {{ 'products.general.include_taxes' | t }}
+            {%- endif -%}
+            {%- if shop.shipping_policy.body != blank -%}
+            {{ 'products.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+            {%- endif -%}
+          </div>
+          {%- endif -%}
+
+          {% form 'product', product, class:productform_class %}
+          <select name="id" id="ProductSelect-{{ section.id }}" class="product-single__variants">
+            {% for variant in product.variants %}
+            {% if variant.available %}
+
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+            {% else %}
+            <option disabled="disabled">
+              {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+            </option>
+            {% endif %}
+            {% endfor %}
+          </select>
+
+          <div class="product-single__quantity{% unless section.settings.product_quantity_enable %} is-hidden{% endunless %}">
+            <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+          </div>
+
+          <button type="submit" name="add" id="AddToCart" class="btn2  js-go-cart-add-to-cart {{ btn_class }}{% if section.settings.enable_payment_button %} btn--secondary{% endif %}">
+            <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+          </button>
+          {% if section.settings.enable_payment_button %}
+          {{ form | payment_button }}
+          {% endif %}
+          {% endform %}
+
+          {% unless section.settings.show_extra_tab == false or pages[section.settings.extra_tab_content] == empty %}
+          <div class="tabs">
+            <ul class="tab-switch__nav">
+              <li>
+                <a href="#description" data-link="description" class="tab-switch__trigger h3">{{ 'products.product.description' | t }}</a>
+              </li>
+              <li>
+                <a href="#extra" data-link="extra" class="tab-switch__trigger h3">{{ pages[section.settings.extra_tab_content].title }}</a>
+              </li>
+            </ul>
+            <div id="description" class="tab-switch__content" data-content="description">
+              <div class="product-description rte" itemprop="description">
+                {{ product.description }}
+              </div>
+            </div>
+            <div id="extra" class="tab-switch__content" data-content="extra">
+              <div class="rte">
+                {{ pages[section.settings.extra_tab_content].content }}
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <div class="product-description rte" itemprop="description">
+            {{ product.description }}
+          </div>
+          {% endunless %}
+
+          {% if section.settings.social_sharing %}
+          <hr class="hr--clear hr--small">
+          <h2 class="h4">{{ 'products.general.share_title' | t }}</h2>
+          {% include 'social-sharing' %}
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% unless product == empty %}
+<script type="application/json" id="ProductJson-{{ section.id }}">
+  {{ product | json }}
+</script>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Product pages",
+  "settings": [
+  {
+    "type": "checkbox",
+    "id": "product_vendor_enable",
+    "label": "Show product vendor"
+  },
+  {
+    "type": "checkbox",
+    "id": "product_quantity_enable",
+    "label": "Show quantity selector"
+  },
+  {
+    "type": "header",
+    "content": "Description"
+  },
+  {
+    "type": "checkbox",
+    "id": "social_sharing",
+    "label": "Enable product sharing"
+  },
+  {
+    "type": "header",
+    "content": "Product options form"
+  },
+  {
+    "type": "checkbox",
+    "id": "enable_payment_button",
+    "label": "Show dynamic checkout button",
+    "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+    "default": true
+  }
+  ]
+}
+{% endschema %}

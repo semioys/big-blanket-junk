@@ -1,0 +1,98 @@
+<style>
+  .call-to-action{
+    color: {{section.settings.text_color }};
+  }
+  .call-to-action__btn .btn{
+    color: {{section.settings.cta_color }};
+    background: {{section.settings.btn_color }};
+    border-color: {{section.settings.btn_color }};
+  }
+
+/*  @media only screen and (min-width: 576px) {
+    .call-to-action{
+      background-image: url({{ section.settings.cta_img | img_url: 'master' }});
+    }
+  }*/
+  @media only screen and (max-width: 576px) {
+   .call-to-action{
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-image: url({{ section.settings.cta_img_mb | img_url: 'master' }}) !important;
+  }
+}
+</style> 
+
+<div class="call-to-action lazyimg" data-src="{{ section.settings.cta_img | img_url: 'master' }}">
+  <div class="container">
+    <h2>
+      {{ section.settings.cta_title }}
+    </h2> 
+    <div class="call-to-action__btn">
+      <a href="{{ section.settings.cta_link }}" class="btn btn--white">
+        {{ section.settings.cta_l_title }}        
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": "Banner 2",
+  "settings": [
+  {
+    "id": "cta_img",
+    "type": "image_picker",
+    "label": "Image"
+  },
+  {
+    "id": "cta_img_mb",
+    "type": "image_picker",
+    "label": "Image mobile"
+  },
+  {
+    "id": "cta_title",
+    "type": "text",
+    "label": "Heading"
+  },
+  {
+    "id": "cta_l_title",
+    "type": "text",
+    "label": "Cta",
+    "default": "shop now"
+  },
+  {
+    "id": "cta_link",
+    "type": "url",
+    "label": "Cta Link"
+  },
+  {
+    "id": "text_color",
+    "type": "color",
+    "label": "Text color",
+    "default": "#fff"
+  },
+  {
+    "id": "cta_color",
+    "type": "color",
+    "label": "Cta color",
+    "default": "#000"
+  },
+  {
+    "id": "btn_color",
+    "type": "color",
+    "label": "Button color",
+    "default": "#fff"
+  }
+
+  ],
+  "presets": [
+  {
+    "name": "Banner 2",
+    "category": "Blocks"
+  } 
+  ]
+}
+{% endschema %}

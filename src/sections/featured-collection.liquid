@@ -1,0 +1,121 @@
+{%- comment -%}
+This is a required section for the Shopify Theme Store.
+It is available in the "Featured Collection" section in the theme editor.
+
+Theme Store required settings
+- Collection
+
+Theme Store optional settings
+- Heading: title of the featured collection section
+{%- endcomment -%}
+<section class="curtain-sl">
+  <div class="curtain-sl__decor curtain-sl__decor--before lazyimg" data-src="{{'curtain_0111.png' | asset_url }}"></div>
+  <div class="container">
+    <div class="curtain-sl__get">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9.5" transform="rotate(-90 10 10)" stroke="white"/><rect width="1.042" height="5.209" rx=".521" transform="rotate(-45 14.01 -3.189)" fill="white"/><rect width="1.042" height="5.209" rx=".521" transform="rotate(45 -3.447 19.798)" fill="white"/></svg>
+      get cozy
+    </div>
+    {% if section.settings.heading != blank %}
+    <h2>{{ section.settings.heading}}</h2> 
+    {% endif %}
+    {% if section.settings.body_text != blank %}
+    <div class="subtitle">{{ section.settings.body_text}}</div>
+    {% endif %}
+  </div>  
+
+  <div class="curtain-sl__box swiper-container">
+    <div class="swiper-wrapper">
+
+      {% for block in section.blocks %}
+
+      <div class="swiper-slide">
+        <div class="curtain-sl__item">
+          {% include 'responsive-image' with  image: block.settings.img_src, max_width: 480, max_height: 480 %}
+          <span class="curtain-sl__item-info">
+            <b>{{ block.settings.label}}</b>
+            {{ block.settings.body_text}}
+          </span>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    <div class="swiper-slide--prev sl-btn sl-btn--prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.596 240.822"><path d="M 57.633,129.007 165.93,237.268 c 4.752,4.74 12.451,4.74 17.215,0 4.752,-4.74 4.752,-12.439 0,-17.179 L 83.438,120.418 183.133,20.747 c 4.752,-4.74 4.752,-12.439 0,-17.191 -4.752,-4.74 -12.463,-4.74 -17.215,0 L 57.621,111.816 c -4.679,4.691 -4.679,12.511 0.012,17.191 z" transform="translate(-54.113 -.001)"/></svg></div>
+    <div class="swiper-slide--next sl-btn sl-btn--next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.596 240.822"><path d="M 183.189,111.816 74.892,3.555 c -4.752,-4.74 -12.451,-4.74 -17.215,0 -4.752,4.74 -4.752,12.439 0,17.179 l 99.707,99.671 -99.695,99.671 c -4.752,4.74 -4.752,12.439 0,17.191 4.752,4.74 12.463,4.74 17.215,0 L 183.201,129.006 c 4.68,-4.691 4.68,-12.511 -0.012,-17.19 z" transform="translate(-54.113)"/></svg></div>
+    <div class="curtain-sl__box-dots"></div>
+  </div>
+  <div class="container">
+    {% if section.settings.cta_link != blank %}
+    <div class="curtain-sl__action">
+      <a href="{{ section.settings.cta_link}}" class="btn">
+        {{ section.settings.cta}}
+      </a>
+    </div>
+    {% endif %}
+  </div>
+  <div class="that-shit-for-parallax"></div>
+  <div class="curtain-sl__decor curtain-sl__decor--after lazyimg" data-src="{{'curtain_022.png' | asset_url}}"></div>
+</section>
+
+{% schema %}
+{
+  "name": "Big Blanket",
+  "settings": [
+  {
+    "type": "text",
+    "id": "heading",
+    "label": "Heading",
+    "default": "At 10x10, Big Blankets are <em>so large</em> we felt<br> we needed to give you a <em>sense of scale.</em>."
+  },
+  {
+    "type": "text",
+    "id": "body_text",
+    "label": "Body text",
+    "default": "Here’s a few things that easily fit within the cuddle of a Big Blanket:"
+  },
+  {
+    "type": "text",
+    "id": "cta",
+    "label": "Cta",
+    "default": "how big is big blanket, really?"
+  },
+  {
+    "type": "url",
+    "id": "cta_link",
+    "label": "Cta Link"
+  }
+  ],
+  "blocks": [
+  {
+    "type": "select",
+    "name": "Image",
+    "settings": [
+    {
+      "id": "img_src",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label"
+    },
+    {
+      "type": "text",
+      "id": "body_text",
+      "label": "Body text"
+    }
+    ] 
+
+  }
+
+  ],
+
+  "presets": [
+  {
+    "name": "Big Blanket",
+    "category": "Blocks"
+  }
+  ]
+}
+{% endschema %}

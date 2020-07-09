@@ -1,0 +1,9 @@
+{% raw %}checkout | submit | [action^="/cart"]:not([action^="/cart/add"]):not(#currency_form)
+checkout | submit | [action^="/checkout"]:not(#currency_form)
+checkout | click | [href^="/checkout"]
+checkout | click | [name="checkout"]
+buy | click | [name="goto_pp"]
+buy | click | [name="goto_amazon_payments"]
+buy | click | [data-testid$="-button"]
+skip | click | [type="submit"][name="update"]
+skip | click | .btn-update[type="submit"]{% endraw %}

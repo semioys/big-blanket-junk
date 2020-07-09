@@ -1,0 +1,111 @@
+<style>
+  @media only screen and (min-width: 375px) {
+    .bbd-prod-top{
+      background-image: url({{ section.settings.bg_img | img_url: 'master' }});
+    }
+  }
+  @media only screen and (max-width: 375px) {
+   .bbd-prod-top{
+     background-image: url({{ section.settings.bg_img_mg | img_url: 'master' }});
+   }
+ }
+</style>
+
+
+<div class="bbd-prod-top" style="color:{{ section.settings.text_color }};">
+ <div class="container">
+  <div class="bbd-prod-top__box" style="text-align:{{section.settings.text_position}}">
+    <h1> 
+      {{ section.settings.h1_text }}
+    </h1>
+    {% if section.settings.body_text != blank %}
+    <div>
+      <div class="curtain-sl__get">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9.5" transform="rotate(-90 10 10)" stroke="white"></circle><rect width="1.042" height="5.209" rx=".521" transform="rotate(-45 14.01 -3.189)" fill="white"></rect><rect width="1.042" height="5.209" rx=".521" transform="rotate(45 -3.447 19.798)" fill="white"></rect></svg>
+        {{section.settings.body_text}} 
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+  {
+    "id": "bg_img",
+    "type": "image_picker",
+    "label": "Image"
+  },
+  {
+    "id": "bg_img_mg",
+    "type": "image_picker",
+    "label": "Image mobile"
+  },
+  {
+    "id": "h1_text",
+    "type": "text",
+    "label": "Heading"
+  },
+  {
+   "id": "body_text",
+   "type": "text",
+   "label": "Body text"
+ },
+ {
+   "id": "text_position",
+   "type": "radio",
+   "label": "Text position",
+   "default":   "center",
+   "options": [
+   { "value": "left", "label": "Left"},
+   { "value": "center", "label": "Center"},
+   { "value": "right", "label": "Right"}
+   ]
+ },
+ {
+  "id": "text_color",
+  "type": "color",
+  "label": "Text color",
+  "default": "#fff"
+}
+
+
+]
+}
+{% endschema %}
+{% comment %}
+
+,
+"blocks": [
+{
+  "type": "select",
+  "name": "Image",
+  "settings": [
+  {
+    "id": "img_src_ico",
+    "type": "image_picker",
+    "label": "Logo icon"
+  }
+  ]
+}
+
+],
+"presets": [
+{
+  "name": "Banner",
+  "category": "Blocks"
+}
+]
+
+{% endcomment %}

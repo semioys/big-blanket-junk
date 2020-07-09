@@ -1,0 +1,773 @@
+{
+  "current": {
+    "color_accent": "#c4cdd5",
+    "color_body_text": "#161d25",
+    "color_main_bg": "#fff",
+    "font_heading": "helvetica_n4",
+    "font_body": "helvetica_n4",
+    "share_image": "",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": false,
+    "social_twitter_link": "https:\/\/twitter.com\/bigblanketco",
+    "social_facebook_link": "https:\/\/www.facebook.com\/bigblanket\/",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/bigblanketco",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "cart_notes_enable": false,
+    "favicon": "shopify:\/\/shop_images\/Favicon.jpg",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Checkout_Logo.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#f7c945",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1587544381994": {
+            "type": "image",
+            "settings": {
+              "product-id": "the-big-blanket"
+            }
+          },
+          "1587544388048": {
+            "type": "image",
+            "settings": {
+              "product-id": "xl-weighted-blanket"
+            }
+          },
+          "1586864820674": {
+            "type": "image",
+            "settings": {
+              "product-id": "woven-big-blanket"
+            }
+          },
+          "1587544395891": {
+            "type": "image",
+            "settings": {
+              "product-id": "premier-plush"
+            }
+          },
+          "1587546738959": {
+            "type": "select",
+            "settings": {
+              "header_menus": ""
+            }
+          },
+          "1587546753688": {
+            "type": "select",
+            "settings": {
+              "header_menus": ""
+            }
+          }
+        },
+        "block_order": [
+          "1587544381994",
+          "1587544388048",
+          "1586864820674",
+          "1587544395891",
+          "1587546738959",
+          "1587546753688"
+        ],
+        "settings": {
+          "announcement_bar_enabled": true,
+          "announcement_bar_text": "ORDERS SHIPPING DAILY. SAVE $30 WITH CODE: THANKSDAD",
+          "announcement_bar_link": ""
+        }
+      },
+      "1585922623165": {
+        "type": "top-block",
+        "blocks": {
+          "1585922633750": {
+            "type": "select",
+            "settings": {
+              "img_src_ico": "shopify:\/\/shop_images\/4_59927595-3c57-4155-a464-18ba078c5c11.png"
+            }
+          },
+          "1585922664289": {
+            "type": "select",
+            "settings": {
+              "img_src_ico": "shopify:\/\/shop_images\/3_032c9663-25b2-4c82-90ae-fcd729599682.png"
+            }
+          },
+          "1585922674179": {
+            "type": "select",
+            "settings": {
+              "img_src_ico": "shopify:\/\/shop_images\/2.png"
+            }
+          },
+          "1585922685594": {
+            "type": "select",
+            "settings": {
+              "img_src_ico": "shopify:\/\/shop_images\/1.png"
+            }
+          }
+        },
+        "block_order": [
+          "1585922633750",
+          "1585922664289",
+          "1585922674179",
+          "1585922685594"
+        ],
+        "settings": {
+          "bg_img": "shopify:\/\/shop_images\/top.jpg",
+          "bg_img_mg": "shopify:\/\/shop_images\/top_mob.jpg",
+          "video_link": "",
+          "h1_text": "The <em>Biggest, Best<\/em><br> Blankets in the World.",
+          "body_text": "",
+          "main_link_name": "Shop Now",
+          "main_link": "shopify:\/\/products\/the-big-blanket",
+          "text_position": "center",
+          "text_color": "#ffffff",
+          "button_color": "#fdfffe",
+          "button_color_hover": "#161d25",
+          "logo_text": "AS SEEN IN:",
+          "logo_label_color": "#ffffff"
+        }
+      },
+      "1585922792348": {
+        "type": "bbd-upgrade",
+        "settings": {
+          "upg_img": "",
+          "video_link": "https:\/\/player.vimeo.com\/external\/424071204.hd.mp4?s=bee3a351dcb86e67e1aeb0fb7a5ae8cc86fa7fa4&profile_id=175",
+          "upg_title": "Big Blankets upgrade every cuddle moment. No matter where it is.",
+          "cta": "shop now",
+          "cta_link": "shopify:\/\/collections\/blankets",
+          "background_color": "#4f5864",
+          "image_position": "left"
+        }
+      },
+      "1585922841146": {
+        "type": "bbd-guarantee",
+        "blocks": {
+          "1590688079293": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_LargestAvailable.png",
+              "icon_svg": "",
+              "gtr_optext": "Biggest, Best Blankets You Can Buy"
+            }
+          },
+          "1590688129476": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_100Night.png",
+              "icon_svg": "",
+              "gtr_optext": "100 Night Guarantee"
+            }
+          },
+          "1585922897986": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_HereForYou-1.png",
+              "icon_svg": "",
+              "gtr_optext": "We’re Always Here For You"
+            }
+          },
+          "1590688162497": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_ReturnsandExchanges.png",
+              "icon_svg": "",
+              "gtr_optext": "Free, Simple Returns + Exchanges"
+            }
+          },
+          "1590688217163": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_FreeUSShipping-2.png",
+              "icon_svg": "",
+              "gtr_optext": "Free Shipping on All US Orders"
+            }
+          }
+        },
+        "block_order": [
+          "1590688079293",
+          "1590688129476",
+          "1585922897986",
+          "1590688162497",
+          "1590688217163"
+        ],
+        "settings": {
+          "grt_image": "shopify:\/\/shop_images\/Big_Guaranteee.jpg",
+          "video_link": "",
+          "grt_title": "The Big Guarantee",
+          "grt_subtitle": "We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket."
+        }
+      },
+      "1585922987446": {
+        "type": "bbd-inpress",
+        "blocks": {
+          "1585922993187": {
+            "type": "select",
+            "settings": {
+              "snc_text": "“Will it make your life unequivocally better? Yes.”",
+              "snc_img": "shopify:\/\/shop_images\/BI_Logo.png"
+            }
+          },
+          "1585923007299": {
+            "type": "select",
+            "settings": {
+              "snc_text": "“Quite possibly the biggest, best<br>blanket in the world.”",
+              "snc_img": "shopify:\/\/shop_images\/12.png"
+            }
+          },
+          "1585923021818": {
+            "type": "select",
+            "settings": {
+              "snc_text": "“Bigger isn't always better, of course — but in this case, it is.”",
+              "snc_img": "shopify:\/\/shop_images\/13.png"
+            }
+          },
+          "1585923035082": {
+            "type": "select",
+            "settings": {
+              "snc_text": "\"A giant, cozy blanket for the whole family to stay warm under.\"",
+              "snc_img": "shopify:\/\/shop_images\/14.png"
+            }
+          }
+        },
+        "block_order": [
+          "1585922993187",
+          "1585923007299",
+          "1585923021818",
+          "1585923035082"
+        ],
+        "settings": {
+          "label_text": "",
+          "background_color": "#f7c945",
+          "font_color": "#000",
+          "accent_color": "#000",
+          "time_func": "2",
+          "sl_autoplay": false
+        }
+      },
+      "1585923058476": {
+        "type": "bbd-action",
+        "settings": {
+          "cta_img": "shopify:\/\/shop_images\/offramp_e00368dc-8777-4347-8cf5-7ab4c1e5065b.jpg",
+          "cta_img_mb": "shopify:\/\/shop_images\/BigBlanket_OffRampCTA_Mobile_b6c095d8-68aa-4d3c-bcc6-fdf2d24d4f8d.jpg",
+          "cta_title": "It’s time to get lost <br> in a Big Blanket.",
+          "cta_l_title": "shop now",
+          "cta_link": "shopify:\/\/collections\/blankets",
+          "text_color": "#fff",
+          "cta_color": "#000",
+          "btn_color": "#fff"
+        }
+      },
+      "1586182605577": {
+        "type": "insta-block",
+        "settings": {
+          "label_text": "#mybigblanket",
+          "heading": "How do you get cozy?"
+        }
+      },
+      "1586769614194": {
+        "type": "featured-collection",
+        "blocks": {
+          "1586770678362": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Big-Blanket-Homepage-Size-Cards_2_Boban.jpg",
+              "label": "Boban Marjanović",
+              "body_text": "He's 7' 4\" (and super cozy)"
+            }
+          },
+          "1586770722474": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Big-Blanket-Homepage-Size-Cards_4_Family.jpg",
+              "label": "The Whole Family",
+              "body_text": "A lot of love"
+            }
+          },
+          "1586770739113": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Epic_Blanket_Forts.jpg",
+              "label": "Epic Blanket Forts",
+              "body_text": "(More like blanket castles)"
+            }
+          },
+          "1586770062809": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Sumo_Yama_copy.jpg",
+              "label": "Sumo Yama",
+              "body_text": "The world's happiest Sumo wrestler"
+            }
+          }
+        },
+        "block_order": [
+          "1586770678362",
+          "1586770722474",
+          "1586770739113",
+          "1586770062809"
+        ],
+        "settings": {
+          "heading": "So big you won't believe it.<br> But <em>it's true<\/em>.",
+          "body_text": "Things that easily fit in the 10’ x 10’ comfort of a Big Blanket:",
+          "cta": "SHOP ALL",
+          "cta_link": "shopify:\/\/collections\/blankets"
+        }
+      },
+      "1586784883238": {
+        "type": "f-prod",
+        "blocks": {
+          "1587543385264": {
+            "type": "image",
+            "settings": {
+              "product-id": "the-big-blanket"
+            }
+          },
+          "1587543392656": {
+            "type": "image",
+            "settings": {
+              "product-id": "xl-weighted-blanket"
+            }
+          },
+          "1587543402111": {
+            "type": "image",
+            "settings": {
+              "product-id": "woven-big-blanket"
+            }
+          },
+          "1587543408169": {
+            "type": "image",
+            "settings": {
+              "product-id": "premier-plush"
+            }
+          }
+        },
+        "block_order": [
+          "1587543385264",
+          "1587543392656",
+          "1587543402111",
+          "1587543408169"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1587630083614": {
+            "type": "select",
+            "settings": {
+              "footer_linklist2": "main-menu"
+            }
+          },
+          "1587630068406": {
+            "type": "select",
+            "settings": {
+              "footer_linklist2": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "1587630083614",
+          "1587630068406"
+        ],
+        "settings": {
+          "footer_linklist": "",
+          "show_payment_icons": false
+        }
+      },
+      "go-cart": {
+        "type": "go-cart",
+        "settings": {}
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_quantity_selector": true,
+          "show_variant_labels": true,
+          "enable_payment_button": false,
+          "gar_img": "shopify:\/\/shop_images\/The-Big-Guarantee.png",
+          "column_richtext": "<p><strong>The Big Guarantee<\/strong><\/p>\n<p>&nbsp;We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket.<\/p>"
+        }
+      },
+      "bbd-inpress": {
+        "type": "bbd-inpress",
+        "blocks": {
+          "1588253673566": {
+            "type": "select",
+            "settings": {
+              "snc_text": "“Will it make your life unequivocally better? Yes.”",
+              "snc_img": "shopify:\/\/shop_images\/BI_Logo.png"
+            }
+          },
+          "1588253696362": {
+            "type": "select",
+            "settings": {
+              "snc_text": "“Quite possibly the biggest, best blanket in the world.”",
+              "snc_img": "shopify:\/\/shop_images\/12.png"
+            }
+          },
+          "1588253707390": {
+            "type": "select",
+            "settings": {
+              "snc_text": "“Bigger isn't always better, of course — but in this case, it is.”",
+              "snc_img": "shopify:\/\/shop_images\/13.png"
+            }
+          },
+          "1588253717437": {
+            "type": "select",
+            "settings": {
+              "snc_text": "\"A giant, cozy blanket for the whole family to stay warm under.\"",
+              "snc_img": "shopify:\/\/shop_images\/14.png"
+            }
+          }
+        },
+        "block_order": [
+          "1588253673566",
+          "1588253696362",
+          "1588253707390",
+          "1588253717437"
+        ],
+        "settings": {
+          "label_text": "IN THE PRESS",
+          "background_color": "#f7c945",
+          "font_color": "#000",
+          "accent_color": "#000",
+          "time_func": "2",
+          "sl_autoplay": false
+        }
+      },
+      "top-block": {
+        "type": "top-block",
+        "settings": {
+          "bg_img": "",
+          "bg_img_mg": "",
+          "video_link": "",
+          "h1_text": "",
+          "body_text": "",
+          "main_link_name": "Shop Now",
+          "main_link": "",
+          "text_position": "center",
+          "text_color": "#fff",
+          "button_color": "#fff",
+          "button_color_hover": "#fff",
+          "logo_text": "",
+          "logo_label_color": "#fff"
+        }
+      },
+      "insta-block": {
+        "type": "insta-block",
+        "settings": {
+          "label_text": "#mybigblanket",
+          "heading": "How do you get cozy?"
+        }
+      },
+      "featured-collection": {
+        "type": "featured-collection",
+        "blocks": {
+          "1588253997095": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Big-Blanket-Homepage-Size-Cards_2_Boban.jpg",
+              "label": "Boban Marjanović",
+              "body_text": "He's 7' 4\" (and super cozy)"
+            }
+          },
+          "1588254015303": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Big-Blanket-Homepage-Size-Cards_4_Family.jpg",
+              "label": "The Whole Family",
+              "body_text": "A lot of love"
+            }
+          },
+          "1588254121144": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Epic_Blanket_Forts.jpg",
+              "label": "Epic Blanket Forts",
+              "body_text": "More like blanket castles"
+            }
+          },
+          "1588254135798": {
+            "type": "select",
+            "settings": {
+              "img_src": "shopify:\/\/shop_images\/Sumo_Yama_copy.jpg",
+              "label": "Sumo Yama",
+              "body_text": "The world's happiest Sumo westler"
+            }
+          }
+        },
+        "block_order": [
+          "1588253997095",
+          "1588254015303",
+          "1588254121144",
+          "1588254135798"
+        ],
+        "settings": {
+          "heading": "Wait... <br>how big<br> is it?",
+          "body_text": "It’s... really big. Here’s a few more examples:",
+          "cta": "SHOP ALL",
+          "cta_link": "shopify:\/\/collections\/blankets"
+        }
+      },
+      "f-prod": {
+        "type": "f-prod",
+        "blocks": {
+          "1588335062690": {
+            "type": "image",
+            "settings": {
+              "product-id": "woven-big-blanket"
+            }
+          },
+          "1588335080595": {
+            "type": "image",
+            "settings": {
+              "product-id": "xl-weighted-blanket"
+            }
+          },
+          "1588335072041": {
+            "type": "image",
+            "settings": {
+              "product-id": "premier-plush"
+            }
+          }
+        },
+        "block_order": [
+          "1588335062690",
+          "1588335080595",
+          "1588335072041"
+        ],
+        "settings": {
+          "title": "We’ve got a Big Blanket for everyone."
+        }
+      },
+      "bbd-prod-section": {
+        "type": "bbd-prod-section",
+        "blocks": {
+          "1588598965886": {
+            "type": "text",
+            "settings": {
+              "product-id": "the-big-blanket"
+            }
+          },
+          "1588598983941": {
+            "type": "text",
+            "settings": {
+              "product-id": "woven-big-blanket"
+            }
+          },
+          "1588599011501": {
+            "type": "text",
+            "settings": {
+              "product-id": "xl-weighted-blanket"
+            }
+          },
+          "1588599023940": {
+            "type": "text",
+            "settings": {
+              "product-id": "premier-plush"
+            }
+          }
+        },
+        "block_order": [
+          "1588598965886",
+          "1588598983941",
+          "1588599011501",
+          "1588599023940"
+        ],
+        "settings": {}
+      },
+      "bbd-prod-section-top": {
+        "type": "bbd-prod-section-top",
+        "settings": {
+          "bg_img": "shopify:\/\/shop_images\/BigBlanket_PLPBanner_Desktop.jpg",
+          "bg_img_mg": "shopify:\/\/shop_images\/BigBlanket_PLPBanner_Mobile.jpg",
+          "h1_text": "The <em>Biggest, Best<\/em><br> Blankets in the World.",
+          "body_text": "4 BIG BLANKET STYLES TO CHOOSE FROM",
+          "text_position": "center",
+          "text_color": "#fff"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "product_vendor_enable": false
+        }
+      },
+      "bbd-guarantee": {
+        "type": "bbd-guarantee",
+        "blocks": {
+          "1588693471905": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_LargestAvailable.png",
+              "icon_svg": "",
+              "gtr_optext": "Biggest, Best Blankets You Can Buy"
+            }
+          },
+          "1588693488117": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_100Night.png",
+              "icon_svg": "",
+              "gtr_optext": "100 Night Guarantee"
+            }
+          },
+          "1588693493850": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_HereForYou-1.png",
+              "icon_svg": "",
+              "gtr_optext": "We're Always Here for You"
+            }
+          },
+          "1590768682738": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_ReturnsandExchanges.png",
+              "icon_svg": "",
+              "gtr_optext": "Free, Simple Returns + Exchanges"
+            }
+          },
+          "1590768707056": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_FreeUSShipping-2.png",
+              "icon_svg": "",
+              "gtr_optext": "Free Shipping on All US Orders"
+            }
+          }
+        },
+        "block_order": [
+          "1588693471905",
+          "1588693488117",
+          "1588693493850",
+          "1590768682738",
+          "1590768707056"
+        ],
+        "settings": {
+          "grt_image": "shopify:\/\/shop_images\/Big_Guaranteee.jpg",
+          "video_link": "",
+          "grt_title": "The Big Guarantee",
+          "grt_subtitle": "We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket."
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {}
+      },
+      "image-with-text": {
+        "type": "image-with-text",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Big_Guaranteee.jpg",
+          "layout": "left",
+          "title": "",
+          "text": "",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "care-section-right": {
+        "type": "care-section-right",
+        "settings": {
+          "grt_image": "",
+          "video_link": "https:\/\/player.vimeo.com\/external\/428264258.hd.mp4?s=b83837ed11653240f1d9b1a7d5d064e77fd03ea2&profile_id=174",
+          "grt_title": "Premium Woven™",
+          "grt_subtitle": "Machine wash cold with like colors. Lay flat to dry. Do not iron. Do not bleach. Dry cleanable."
+        }
+      },
+      "care-section-right-2": {
+        "type": "care-section-right-2",
+        "settings": {
+          "grt_image": "",
+          "video_link": "https:\/\/player.vimeo.com\/external\/428264258.hd.mp4?s=b83837ed11653240f1d9b1a7d5d064e77fd03ea2&profile_id=174",
+          "grt_title": "XL Weighted™",
+          "grt_subtitle": "Core — Hand wash or spot clean. May machine wash only in commercial grade machines. <br> <br>Duvet — Machine wash cold with like colors on a gentle cycle. Tumble dry low, remove promptly. Non-chlorine bleach when needed. Warm iron."
+        }
+      },
+      "care-section-left": {
+        "type": "care-section-left",
+        "settings": {
+          "grt_image": "",
+          "video_link": "https:\/\/player.vimeo.com\/external\/428262899.hd.mp4?s=7f6d27f1223fb6ab5fc52da905cff6bfd1cadb20&profile_id=174",
+          "grt_title": "Original Stretch™",
+          "grt_subtitle": "Wash before using. Machine wash cold with like colors. Tumble dry on low temp. Do not bleach. Do not iron."
+        }
+      },
+      "care-section-left-2": {
+        "type": "care-section-left-2",
+        "settings": {
+          "grt_image": "",
+          "video_link": "https:\/\/player.vimeo.com\/external\/428256769.hd.mp4?s=1378c2f5ce617be8bb3eae44188b75949c51a520&profile_id=174",
+          "grt_title": "Premier Plush™️",
+          "grt_subtitle": "Wash before using. Machine wash cold separately on delicate. Hang dry or tumble dry low, remove promptly. Do not bleach. Do not iron."
+        }
+      }
+    },
+    "content_for_index": [
+      "1585922623165",
+      "1586769614194",
+      "1586784883238",
+      "1585922792348",
+      "1585922841146",
+      "1585922987446",
+      "1586182605577",
+      "1585923058476"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "collection-list": {
+          "type": "collection-list",
+          "blocks": {
+            "collection-list-0": {
+              "type": "collection",
+              "settings": {}
+            },
+            "collection-list-1": {
+              "type": "collection",
+              "settings": {}
+            },
+            "collection-list-2": {
+              "type": "collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "collection-list-0",
+            "collection-list-1",
+            "collection-list-2"
+          ],
+          "settings": {}
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "settings": {}
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "collection-list",
+        "featured-collection",
+        "featured-product"
+      ]
+    }
+  }
+}

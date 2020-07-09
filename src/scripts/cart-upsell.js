@@ -1,4 +1,5 @@
 import GoCart from '@bornfight/gocart';
+import './cart-upsell.scss';
 
 const cartUpsell = () => {
   var CART_OVERLAY = document.querySelector(".go-cart__overlay");

@@ -11,7 +11,6 @@ module.exports = {
       ]
     }
   },
-  in: '/src/scripts/index.js',
   assets: {
     presets: [
       'sass'

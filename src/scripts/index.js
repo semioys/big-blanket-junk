@@ -1,5 +1,6 @@
 import GoCart from '@bornfight/gocart';
 import cartUpsell from "./cart-upsell";
+import './go-cart.scss';
 
 const goCart = new GoCart({
   cartMode: 'drawer', //drawer or mini-cart  
@@ -8,4 +9,4 @@ const goCart = new GoCart({
   moneyFormat: '${{amount}}', //template for money format when displaying money
 });
 
-// cartUpsell();
+cartUpsell();

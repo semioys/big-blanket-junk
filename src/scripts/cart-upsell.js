@@ -1,5 +1,5 @@
-import GoCart from '@bornfight/gocart';
-import './cart-upsell.scss';
+import GoCart from "@bornfight/gocart";
+import "./cart-upsell.scss";
 
 const cartUpsell = () => {
   var CART_OVERLAY = document.querySelector(".go-cart__overlay");
@@ -93,7 +93,7 @@ const cartUpsell = () => {
   function generateProductForm(product, discount) {
     console.log(product, discount);
     const form = `
-      <form action="/cart/add" method="post" enctype="multipart/form-data" 
+      <form action="/cart/add" method="post" class="product_form" enctype="multipart/form-data" 
         id="add-to-cart-${product.handle}">
         <select name="id" id="ProductSelect-${
           product.id

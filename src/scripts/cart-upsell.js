@@ -42,6 +42,7 @@ const cartUpsell = () => {
       .then((data) => {
         var item_handles = [];
         var items = data.items;
+        items.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
         for (let i = 0; i < items.length; i++) {
           item_handles.push(items[i].handle);
         }
@@ -51,6 +52,7 @@ const cartUpsell = () => {
       .then((item_handles) => {
         if (item_handles.length) {
           var discounted_handles = [];
+          let isFormExists = false;
           for (let i = 0; i < item_handles.length; i++) {
             var products = fetch(`/products/${item_handles[i]}.js`)
               .then((response) => response.json())
@@ -76,11 +78,15 @@ const cartUpsell = () => {
                         continue;
                       }
 
-                      fetch(`/products/${handle}.js`)
+                      if (!isFormExists) {
+                        fetch(`/products/${handle}.js`)
                         .then((response) => response.json())
                         .then((discounted_product) => {
                           callback(discounted_product, discount_percent);
                         });
+                      }
+
+                      isFormExists = true
                     }
                   }
                 }
@@ -93,7 +99,7 @@ const cartUpsell = () => {
   function generateProductForm(product, discount) {
     console.log(product, discount);
     const form = `
-      <form action="/cart/add" method="post" class="product_form" enctype="multipart/form-data" 
+      <form action="/cart/add" method="post" class="cart-upsell__form" enctype="multipart/form-data" 
         id="add-to-cart-${product.handle}">
         <select name="id" id="ProductSelect-${
           product.id

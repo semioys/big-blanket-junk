@@ -1,47 +1,80 @@
 import GoCart from "@bornfight/gocart";
 import "./cart-upsell.scss";
 
-const cartUpsell = () => {
-  var CART_OVERLAY = document.querySelector(".go-cart__overlay");
-  var CART_FOOTER = document.querySelector(".go-cart-drawer__footer");
+class CartUpsell {
+  constructor() {
+    this.cartOverlay = document.querySelector(".go-cart__overlay");
+    this.cartFooter = document.querySelector(".go-cart-drawer__footer");
+    this.setMutationObserverForCart();
+  }
 
-  (function setMutationObserverForCart() {
-    const mutationObserver = new MutationObserver(watchForCartClassMutation);
+  setMutationObserverForCart() {
+    const mutationObserver = new MutationObserver(
+      this.watchForCartClassMutation.bind(this)
+    );
 
-    mutationObserver.observe(document.querySelector(".go-cart__overlay"), {
+    mutationObserver.observe(this.cartOverlay, {
       attributes: true,
     });
-  })();
+  }
 
-  function isCartOpened(cart_overlay) {
-    const opened = cart_overlay.classList.contains("is-open");
+  watchForCartClassMutation(mutationsList, observer) {
+    console.log(mutationsList, 'mutationsList');
+    console.log(observer, 'observer');
+    mutationsList.forEach((mutation) => {
+      if (mutation.attributeName === "class") {
+        console.log('here');
+        const opened = this.isCartOpened(this.cartOverlay);
+        const rootEl = this.generateRootElement();
+        this.addRootElToCart(rootEl);
+
+        if (opened) {
+          this.getDiscountedProduct((product, discount) => {
+            const product_form = this.generateProductForm(product, discount);
+            rootEl.append(product_form);
+            const goCart = new GoCart({
+              cartMode: "drawer", //drawer or mini-cart
+              drawerDirection: "right", //cart drawer from left or right
+              displayModal: false, //display success modal when adding product to cart
+              moneyFormat: "${{amount}}", //template for money format when displaying money
+            });
+          });
+        } else {
+          rootEl.remove();
+        }
+      }
+    });
+  }
+
+  isCartOpened(cart) {
+    const opened = cart.classList.contains("is-open");
     return opened;
   }
 
-  function generateRootElement() {
-    var previousRoot = document.querySelector(".cart-upsell");
+  isInHandlesArray(handle, item_handles, discounted_handles) {
+    return item_handles.includes(handle) || discounted_handles.includes(handle);
+  }
+
+  generateRootElement() {
+    const previousRoot = document.querySelector(".cart-upsell");
     previousRoot ? previousRoot.remove() : null;
 
-    var root = document.createElement("div");
+    const root = document.createElement("div");
     root.classList.add("cart-upsell");
 
     return root;
   }
 
-  function addRootElToCart(rootEl) {
-    CART_FOOTER.prepend(rootEl);
+  addRootElToCart(rootEl) {
+    this.cartFooter.prepend(rootEl);
   }
 
-  function isInHandlesArray(handle, item_handles, discounted_handles) {
-    return item_handles.includes(handle) || discounted_handles.includes(handle);
-  }
-
-  function getDiscountedProduct(callback) {
-    var cartContents = fetch("/cart.js")
+  getDiscountedProduct(callback) {
+    const cartContents = fetch("/cart.js")
       .then((response) => response.json())
       .then((data) => {
-        var item_handles = [];
-        var items = data.items;
+        const item_handles = [];
+        const items = data.items;
         items.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
         for (let i = 0; i < items.length; i++) {
           item_handles.push(items[i].handle);
@@ -51,22 +84,22 @@ const cartUpsell = () => {
       })
       .then((item_handles) => {
         if (item_handles.length) {
-          var discounted_handles = [];
+          const discounted_handles = [];
           let isFormExists = false;
           for (let i = 0; i < item_handles.length; i++) {
-            var products = fetch(`/products/${item_handles[i]}.js`)
+            const products = fetch(`/products/${item_handles[i]}.js`)
               .then((response) => response.json())
               .then((product) => {
-                var tags = product.tags;
+                const tags = product.tags;
                 if (tags.length) {
                   for (let i = 0; i < tags.length; i++) {
                     if (tags[i].includes("discount")) {
-                      var tags_special = tags[i].split("/");
-                      var discount = tags_special[0];
-                      var handle = tags_special[1];
-                      var discount_percent = tags_special[2];
+                      const tags_special = tags[i].split("/");
+                      const discount = tags_special[0];
+                      const handle = tags_special[1];
+                      const discount_percent = tags_special[2];
 
-                      var shouldntParse = isInHandlesArray(
+                      const shouldntParse = this.isInHandlesArray(
                         handle,
                         item_handles,
                         discounted_handles
@@ -80,13 +113,13 @@ const cartUpsell = () => {
 
                       if (!isFormExists) {
                         fetch(`/products/${handle}.js`)
-                        .then((response) => response.json())
-                        .then((discounted_product) => {
-                          callback(discounted_product, discount_percent);
-                        });
+                          .then((response) => response.json())
+                          .then((discounted_product) => {
+                            callback(discounted_product, discount_percent);
+                          });
                       }
 
-                      isFormExists = true
+                      isFormExists = true;
                     }
                   }
                 }
@@ -96,7 +129,7 @@ const cartUpsell = () => {
       });
   }
 
-  function generateProductForm(product, discount) {
+  generateProductForm(product, discount) {
     console.log(product, discount);
     const form = `
       <form action="/cart/add" method="post" class="cart-upsell__form" enctype="multipart/form-data" 
@@ -132,31 +165,6 @@ const cartUpsell = () => {
     form_node.innerHTML = form;
     return form_node;
   }
+}
 
-  function watchForCartClassMutation(mutationsList, observer) {
-    mutationsList.forEach((mutation) => {
-      if (mutation.attributeName === "class") {
-        var opened = isCartOpened(CART_OVERLAY);
-        var rootEl = generateRootElement();
-        addRootElToCart(rootEl);
-
-        if (opened) {
-          getDiscountedProduct(function (product, discount) {
-            var product_form = generateProductForm(product, discount);
-            rootEl.append(product_form);
-            const goCart = new GoCart({
-              cartMode: "drawer", //drawer or mini-cart
-              drawerDirection: "right", //cart drawer from left or right
-              displayModal: false, //display success modal when adding product to cart
-              moneyFormat: "${{amount}}", //template for money format when displaying money
-            });
-          });
-        } else {
-          rootEl.remove();
-        }
-      }
-    });
-  }
-};
-
-export default cartUpsell;
+export default CartUpsell;

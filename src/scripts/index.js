@@ -1,5 +1,5 @@
 import GoCart from '@bornfight/gocart';
-import cartUpsell from "./cart-upsell/cart-upsell";
+import CartUpsell from "./cart-upsell/cart-upsell";
 import './go-cart/go-cart.scss';
 
 const goCart = new GoCart({
@@ -9,4 +9,4 @@ const goCart = new GoCart({
   moneyFormat: '${{amount}}', //template for money format when displaying money
 });
 
-cartUpsell();
+const cartUpsell = new CartUpsell();

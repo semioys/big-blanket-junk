@@ -2,13 +2,15 @@ import GoCart from "@bornfight/gocart";
 import "./cart-upsell.scss";
 
 class CartUpsell {
-  constructor() {
+  constructor(goCart) {
+    this.goCart = goCart;
     this.cartOverlay = document.querySelector(".go-cart__overlay");
     this.cartFooter = document.querySelector(".go-cart-drawer__footer");
     this.setMutationObserverForCart();
+
   }
 
-  setMutationObserverForCart() {
+  setMutationObserverForCart() {  
     const mutationObserver = new MutationObserver(
       this.watchForCartClassMutation.bind(this)
     );
@@ -19,31 +21,26 @@ class CartUpsell {
   }
 
   watchForCartClassMutation(mutationsList, observer) {
-    console.log(mutationsList, 'mutationsList');
-    console.log(observer, 'observer');
-    mutationsList.forEach((mutation) => {
-      if (mutation.attributeName === "class") {
-        console.log('here');
-        const opened = this.isCartOpened(this.cartOverlay);
-        const rootEl = this.generateRootElement();
-        this.addRootElToCart(rootEl);
+    const opened = this.isCartOpened(this.cartOverlay);
+    const rootEl = this.generateRootElement();
+    this.addRootElToCart(rootEl);
 
-        if (opened) {
-          this.getDiscountedProduct((product, discount) => {
-            const product_form = this.generateProductForm(product, discount);
-            rootEl.append(product_form);
-            const goCart = new GoCart({
-              cartMode: "drawer", //drawer or mini-cart
-              drawerDirection: "right", //cart drawer from left or right
-              displayModal: false, //display success modal when adding product to cart
-              moneyFormat: "${{amount}}", //template for money format when displaying money
-            });
+    if (opened) {
+      this.getDiscountedProduct((product, discount) => {
+        const product_form = this.generateProductForm(product, discount);
+        rootEl.append(product_form);
+        this.goCart.addToCart = document.querySelectorAll('.js-go-cart-add-to-cart');
+        this.goCart.addToCart.forEach((item) => {
+          item.addEventListener('click', (event) => {
+              event.preventDefault();
+              const formID = item.parentNode.getAttribute('id');
+              this.goCart.addItemToCart(formID);
           });
-        } else {
-          rootEl.remove();
-        }
-      }
-    });
+        });
+      });
+    } else {
+      rootEl.remove();
+    }
   }
 
   isCartOpened(cart) {

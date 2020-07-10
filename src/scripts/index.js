@@ -9,4 +9,4 @@ const goCart = new GoCart({
   moneyFormat: '${{amount}}', //template for money format when displaying money
 });
 
-const cartUpsell = new CartUpsell();
+const cartUpsell = new CartUpsell(goCart);

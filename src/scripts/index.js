@@ -1,6 +1,6 @@
 import GoCart from '@bornfight/gocart';
-import cartUpsell from "./cart-upsell";
-import './go-cart.scss';
+import cartUpsell from "./cart-upsell/cart-upsell";
+import './go-cart/go-cart.scss';
 
 const goCart = new GoCart({
   cartMode: 'drawer', //drawer or mini-cart  

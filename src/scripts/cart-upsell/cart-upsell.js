@@ -1,4 +1,3 @@
-import GoCart from "@bornfight/gocart";
 import "./cart-upsell.scss";
 
 class CartUpsell {
@@ -7,7 +6,6 @@ class CartUpsell {
     this.cartOverlay = document.querySelector(".go-cart__overlay");
     this.cartFooter = document.querySelector(".go-cart-drawer__footer");
     this.setMutationObserverForCart();
-
   }
 
   setMutationObserverForCart() {  

@@ -70,7 +70,8 @@
     <!--go cart drawer close-->
     <div class="go-cart-drawer__header">
 
-      <div class="heading">{{ 'cart.general.title' | t }} {% comment %}<span>({{ cart.item_count }} item)</span>{% endcomment %}</div>
+      <!-- <div class="heading">{{ 'cart.general.title' | t }} {% comment %}<span>({{ cart.item_count }} item)</span>{% endcomment %}</div> -->
+      <div class="heading">Your Cart {% comment %}<span>({{ cart.item_count }} item)</span>{% endcomment %}</div>
 
       <div class="go-cart-drawer__close js-go-cart-drawer-close">
 
@@ -87,17 +88,6 @@
     <div class="go-cart-promo">
       <p class="go-cart-promo__text">YOU QUALIFY FOR FAST & FREE SHIPPING!</p>
     </div>
-
-    <style>
-      .go-cart-promo {
-        background-color: black;
-        text-align: center;
-      }
-
-      .go-cart-promo__text {
-        color: #fff;
-      }
-    </style>
     
     <!-- cart upsell changes -->
 
@@ -105,16 +95,20 @@
     <div class="go-cart-drawer__content js-go-cart-drawer-content"></div>
     <!--end go cart drawer content-->
 
-    <!--go cart drawer subtotal-->
-    <div class="go-cart-drawer__subtotal">
-      <span>Subtotal: </span>
-      <span class="go-cart-drawer__subtotal-price js-go-cart-drawer-subtotal"></span>
-    </div>
-    <!--end go cart drawer subtotal-->
-    
     <!--go cart drawer buttons-->
     <div class="go-cart-drawer__footer js-go-cart-drawer-footer">
-
+      <!--go cart drawer subtotal-->
+      <div class="go-cart-drawer__wrapper">
+        <div class="go-cart-drawer__subtotal">
+          <span>Subtotal: </span>
+          <span class="go-cart-drawer__subtotal-price js-go-cart-drawer-subtotal"></span>
+        </div>
+  
+        <p class="go-cart-drawer__discount_info">
+          Discounts Applied At Checkout
+        </p>
+      </div>
+      <!--end go cart drawer subtotal-->
       <a href="/checkout/" class="btn btn--yellow go-cart__button">
         Checkout
      </a>
@@ -135,3 +129,45 @@
 <div class="go-cart__overlay js-go-cart-overlay">
 </div>
 <!--end go cart overlay-->
+
+
+<style>
+  .go-cart-promo {
+    background-color: black;
+    text-align: center;
+  }
+
+  .go-cart-promo__text {
+    font-size: 12px;
+    margin: 11px auto;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .go-cart-drawer__discount_info {
+    padding: 10px 15px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: right;
+    margin: 0;
+    line-height: 127%;
+    letter-spacing: -0.02em;
+    color: #000000;
+  }
+
+  .go-cart-drawer__wrapper {
+    padding: 20px 10px 0 10px;
+    box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.09);
+  }
+
+  .go-cart-drawer__footer.js-go-cart-drawer-footer {
+    padding: 0;
+  }
+
+  .btn.btn--yellow.go-cart__button {
+    margin: 15px 10px;
+    margin-top: 0;
+  }
+</style>

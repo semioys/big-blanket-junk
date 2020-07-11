@@ -12,7 +12,7 @@ class CartUpsell {
 
   setMutationObserverForCart() {  
     const mutationObserver = new MutationObserver(
-      this.watchForCartClassMutation.bind(this)
+      this.listenForCartMutation.bind(this)
     );
 
     mutationObserver.observe(this.cartOverlay, {
@@ -20,7 +20,7 @@ class CartUpsell {
     });
   }
 
-  watchForCartClassMutation(mutationsList, observer) {
+  listenForCartMutation(mutationsList, observer) {
     const opened = this.isCartOpened(this.cartOverlay);
     const rootEl = this.generateRootElement();
     this.addRootElToCart(rootEl);

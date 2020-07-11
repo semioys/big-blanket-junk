@@ -27,20 +27,23 @@ class CartUpsell {
 
     if (opened) {
       this.getDiscountedProduct((product, discount) => {
-        const product_form = this.generateProductForm(product, discount);
-        rootEl.append(product_form);
-        this.goCart.addToCart = document.querySelectorAll('.js-go-cart-add-to-cart');
-        this.goCart.addToCart.forEach((item) => {
-          item.addEventListener('click', (event) => {
-              event.preventDefault();
-              const formID = item.parentNode.getAttribute('id');
-              this.goCart.addItemToCart(formID);
-          });
-        });
+        this.generateProductForm(product, discount, rootEl);
+        this.setEventListenerForAddToCartButtons();
       });
     } else {
       rootEl.remove();
     }
+  }
+
+  setEventListenerForAddToCartButtons() {
+    this.goCart.addToCart = document.querySelectorAll('.js-go-cart-add-to-cart');
+    this.goCart.addToCart.forEach((item) => {
+      item.addEventListener('click', (event) => {
+        event.preventDefault();
+        const formID = item.parentNode.getAttribute('id');
+        this.goCart.addItemToCart(formID);
+      });
+    });
   }
 
   isCartOpened(cart) {
@@ -126,7 +129,7 @@ class CartUpsell {
       });
   }
 
-  generateProductForm(product, discount) {
+  generateProductForm(product, discount, rootEl) {
     console.log(product, discount);
     const form = `
       <form action="/cart/add" method="post" class="cart-upsell__form" enctype="multipart/form-data" 
@@ -158,8 +161,9 @@ class CartUpsell {
         </button>
       </form>
     `;
-    var form_node = document.createElement("div");
+    const form_node = document.createElement("div");
     form_node.innerHTML = form;
+    rootEl.append(form_node);
     return form_node;
   }
 }
